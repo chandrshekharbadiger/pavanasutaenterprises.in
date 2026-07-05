@@ -55,7 +55,7 @@ function ServicesMegaMenu({ onNavigate, onClose }) {
       <div className="services-mega-inner">
         <div className="services-mega-intro">
           <p className="eyebrow">Services</p>
-          <h3>MEP engineering solutions</h3>
+          <h3>Complete MEP engineering solutions</h3>
           <p>
             Explore the full mechanical, electrical, plumbing, and fire-protection
             scope, grouped so teams can move from browsing to quoting quickly.
@@ -286,7 +286,18 @@ export function SiteLayout() {
             {contactMethods.map((item) => (
               <div key={item.title} className="footer-contact-line">
                 <span>{item.title}</span>
-                <strong>{item.value}</strong>
+                {item.phones ? (
+                  <strong className="footer-phone-list">
+                    {item.phones.map((phone, index) => (
+                      <span key={phone.digits}>
+                        {index > 0 ? ' / ' : null}
+                        <a href={`tel:${phone.digits}`}>{phone.number}</a>
+                      </span>
+                    ))}
+                  </strong>
+                ) : (
+                  <strong>{item.value}</strong>
+                )}
               </div>
             ))}
           </div>

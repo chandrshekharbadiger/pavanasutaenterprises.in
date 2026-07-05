@@ -56,7 +56,7 @@ function PageHero() {
             '@type': 'LocalBusiness',
             name: site.name,
             url: buildUrl('/'),
-            telephone: site.phone,
+            telephone: site.phones.map((phone) => phone.digits),
             email: site.email,
             address: {
               '@type': 'PostalAddress',
@@ -147,14 +147,32 @@ function PageHero() {
           <FiTool aria-hidden="true" />
           <div>
             <strong>Modern engineering</strong>
-            <span>HVAC, electrical, plumbing, and fire systems</span>
+            <span>
+              Heat Ventilation and Air Conditioning
+              <br />
+              Fire Fighting & Protection System
+              <br />
+              Electrical System
+              <br />
+              Plumbing System
+            </span>
           </div>
         </div>
         <div className="hero-image-card hero-image-card-bottom">
           <FiStar aria-hidden="true" />
           <div>
-            <strong>Enterprise ready</strong>
-            <span>Testing, commissioning, AMC, and service support</span>
+            <strong>PAVANASUTA</strong>
+            <span>
+              Installation
+              <br />
+              Testing
+              <br />
+              Commissioning
+              <br />
+              Service Provider
+              <br />
+              AMC
+            </span>
           </div>
         </div>
         {!reduceMotion ? <motion.div className="hero-orbit" animate={{ y: [0, -8, 0] }} transition={{ duration: 5, repeat: Infinity }} /> : null}
@@ -422,6 +440,7 @@ function LatestProjectsSection() {
         items={latestProjects.map((project) => ({
           title: project.title,
           caption: `${project.category} - ${project.status}`,
+          image: project.image,
         }))}
       />
     </section>

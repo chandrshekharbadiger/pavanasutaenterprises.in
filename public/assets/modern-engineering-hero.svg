@@ -1,0 +1,29 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="36" fill="#071A2E"/>
+  <rect x="70" y="90" width="1060" height="720" rx="26" fill="#0F2C48"/>
+  <rect x="120" y="150" width="320" height="250" rx="20" fill="#1B4971"/>
+  <rect x="170" y="210" width="220" height="160" rx="14" fill="#DDEBFA"/>
+  <rect x="170" y="260" width="120" height="20" rx="10" fill="#6FA9D9"/>
+  <rect x="300" y="240" width="80" height="90" rx="12" fill="#8FD0FF"/>
+  <rect x="470" y="150" width="300" height="220" rx="24" fill="#183D5E"/>
+  <rect x="510" y="200" width="220" height="130" rx="16" fill="#DDE8F6"/>
+  <rect x="530" y="220" width="80" height="18" rx="9" fill="#4B87BC"/>
+  <rect x="625" y="220" width="90" height="18" rx="9" fill="#4B87BC"/>
+  <path d="M460 575C460 508.726 512.726 456 579 456H711C777.274 456 830 508.726 830 575V657H460V575Z" fill="#2D5F82"/>
+  <rect x="500" y="650" width="300" height="90" rx="20" fill="#0D2239"/>
+  <path d="M600 425V575" stroke="#8FD0FF" stroke-width="20" stroke-linecap="round"/>
+  <path d="M650 425V575" stroke="#8FD0FF" stroke-width="20" stroke-linecap="round"/>
+  <path d="M700 425V575" stroke="#8FD0FF" stroke-width="20" stroke-linecap="round"/>
+  <rect x="820" y="220" width="180" height="180" rx="20" fill="#1D4E73"/>
+  <rect x="850" y="250" width="120" height="110" rx="16" fill="#DCECFB"/>
+  <circle cx="910" cy="305" r="34" fill="#4F8CC7"/>
+  <circle cx="910" cy="305" r="18" fill="#E8F7FF"/>
+  <path d="M210 520H450" stroke="#6FA9D9" stroke-width="16" stroke-linecap="round"/>
+  <path d="M230 590H360" stroke="#4B87BC" stroke-width="16" stroke-linecap="round"/>
+  <path d="M240 660H330" stroke="#4B87BC" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="880" cy="620" r="88" fill="#0D2239" stroke="#6FA9D9" stroke-width="8"/>
+  <path d="M882 560V680" stroke="#DDEBFA" stroke-width="14" stroke-linecap="round"/>
+  <path d="M822 620H942" stroke="#DDEBFA" stroke-width="14" stroke-linecap="round"/>
+  <rect x="120" y="720" width="180" height="56" rx="16" fill="#E5F1FA"/>
+  <text x="150" y="755" fill="#0F2C48" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Modern engineering</text>
+</svg>

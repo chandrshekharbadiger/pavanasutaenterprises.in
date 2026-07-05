@@ -211,7 +211,7 @@ export function ProjectCard({ project }) {
       transition={{ duration: 0.45 }}
     >
       <div className="project-card-image">
-        <img src={site.accentImage} alt="" loading="lazy" decoding="async" />
+        <img src={project.image || site.accentImage} alt="" loading="lazy" decoding="async" />
         <div className="project-card-overlay" aria-hidden="true" />
         <span className={`project-status project-status-${project.status.toLowerCase()}`}>
           {project.status}
@@ -259,7 +259,7 @@ export function MiniGallery({ items, image = site.accentImage }) {
           whileHover={{ y: -4 }}
           transition={{ duration: 0.4, delay: index * 0.04 }}
         >
-          <img src={image} alt="" loading="lazy" decoding="async" />
+          <img src={item.image || image} alt="" loading="lazy" decoding="async" />
           <figcaption>
             <strong>{item.title}</strong>
             <span>{item.caption}</span>

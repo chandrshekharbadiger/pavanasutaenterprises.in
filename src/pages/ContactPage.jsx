@@ -111,7 +111,18 @@ export function ContactPage() {
               >
                 <Icon aria-hidden="true" />
                 <strong>{item.title}</strong>
-                <span>{item.value}</span>
+                {item.phones ? (
+                  <span className="contact-phone-list">
+                    {item.phones.map((phone, index) => (
+                      <span key={phone.digits}>
+                        {index > 0 ? ' / ' : null}
+                        <a href={`tel:${phone.digits}`}>{phone.number}</a>
+                      </span>
+                    ))}
+                  </span>
+                ) : (
+                  <span>{item.value}</span>
+                )}
               </motion.article>
             )
           })}

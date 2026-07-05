@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>http://localhost:5173/</loc></url>
-  <url><loc>http://localhost:5173/services</loc></url>
-  <url><loc>http://localhost:5173/projects</loc></url>
-  <url><loc>http://localhost:5173/annual-maintenance-contracts</loc></url>
   <url><loc>http://localhost:5173/about-us</loc></url>
+  <url><loc>http://localhost:5173/projects</loc></url>
+  <url><loc>http://localhost:5173/services</loc></url>
+  <url><loc>http://localhost:5173/annual-maintenance-contracts</loc></url>
   <url><loc>http://localhost:5173/careers</loc></url>
   <url><loc>http://localhost:5173/careers/thank-you</loc></url>
   <url><loc>http://localhost:5173/contact</loc></url>
   <url><loc>http://localhost:5173/services/hvac</loc></url>
-  <url><loc>http://localhost:5173/services/chillers</loc></url>
+  <url><loc>http://localhost:5173/services/hiwall</loc></url>
+  <url><loc>http://localhost:5173/services/dx-units</loc></url>
   <url><loc>http://localhost:5173/services/vrf-system</loc></url>
-  <url><loc>http://localhost:5173/services/vrv-system</loc></url>
-  <url><loc>http://localhost:5173/services/dx-system</loc></url>
-  <url><loc>http://localhost:5173/services/hiwall-units</loc></url>
+  <url><loc>http://localhost:5173/services/chilled-water-system</loc></url>
   <url><loc>http://localhost:5173/services/fire-protection</loc></url>
   <url><loc>http://localhost:5173/services/fire-fighting</loc></url>
   <url><loc>http://localhost:5173/services/fire-detection</loc></url>

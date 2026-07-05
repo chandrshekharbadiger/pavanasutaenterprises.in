@@ -17,19 +17,24 @@ import {
 } from 'react-icons/fi'
 
 export const site = {
-  name: 'PAVANSUTA ENTERPRISES',
-  shortName: 'Pavansuta',
-  tagline: 'MEP engineering solutions for commercial, industrial, and residential projects.',
+  name: 'PAVANASUTA ENTERPRISES',
+  shortName: 'Pavanasuta',
+  tagline: 'Complete MEP engineering solutions for commercial, industrial, and residential projects.',
   description:
     'Premium MEP engineering for HVAC, fire protection, electrical, plumbing, AMC, and facility operations.',
-  phone: '+91 6361999504',
+  phone: '6361999504 / 8147838964',
+  phones: [
+    { number: '6361999504', digits: '+916361999504' },
+    { number: '8147838964', digits: '+918147838964' },
+  ],
   phoneDigits: '+916361999504',
   whatsapp: '+916361999504',
   email: 'tanuja.pavanasuta@gmail.com',
   address: '#84, Marikunte, Davangere—577513',
   workingHours: 'Mon - Sat, 8:30 AM - 7:00 PM',
   siteUrl: import.meta.env.VITE_SITE_URL || 'http://localhost:5173',
-  accentImage: '/assets/engineering-hero.svg',
+  accentImage:
+    'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80',
 }
 
 export const buildUrl = (path = '/') => {
@@ -40,10 +45,10 @@ export const buildUrl = (path = '/') => {
 
 export const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
-  { label: 'Projects', path: '/projects' },
-  { label: 'AMC', path: '/annual-maintenance-contracts' },
   { label: 'About', path: '/about-us' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Services', path: '/services' },
+  { label: 'AMC', path: '/annual-maintenance-contracts' },
   { label: 'Careers', path: '/careers' },
   { label: 'Contact', path: '/contact' },
 ]
@@ -359,47 +364,39 @@ const mechanicalServices = [
     group: 'mechanical',
     summary: 'Full-spectrum cooling, ventilation, ducting, and controls for occupiable and critical environments.',
     specialty: 'Chilled-water plants, air handling, ducting, TAB, and BMS integration.',
-    related: ['chillers', 'vrf-system', 'dx-system'],
+    related: ['hiwall', 'dx-units', 'vrf-system', 'chilled-water-system'],
   },
   {
-    slug: 'chillers',
-    title: 'Chillers',
-    group: 'mechanical',
-    summary: 'Efficient chilled-water plant planning with pumps, piping, and commissioning support.',
-    specialty: 'Equipment sizing, plant room layout, chilled-water piping, and optimization.',
-    related: ['hvac', 'vrf-system', 'dx-system'],
-  },
-  {
-    slug: 'vrf-system',
-    title: 'VRF System',
-    group: 'mechanical',
-    summary: 'Multi-zone comfort with low energy use and compact outdoor equipment.',
-    specialty: 'Multi-zone refrigerant routing, indoor unit selection, and controls.',
-    related: ['vrv-system', 'dx-system', 'hiwall-units'],
-  },
-  {
-    slug: 'vrv-system',
-    title: 'VRV System',
-    group: 'mechanical',
-    summary: 'Precise refrigerant-based zoning for offices, hotels, and mixed-use buildings.',
-    specialty: 'Long piping runs, room-level comfort, and efficient zoned operation.',
-    related: ['vrf-system', 'dx-system', 'hiwall-units'],
-  },
-  {
-    slug: 'dx-system',
-    title: 'DX System',
-    group: 'mechanical',
-    summary: 'Direct-expansion comfort solutions for retail, offices, and compact facilities.',
-    specialty: 'Split and packaged units with quick-fit delivery and service access.',
-    related: ['hiwall-units', 'vrf-system', 'hvac'],
-  },
-  {
-    slug: 'hiwall-units',
-    title: 'Hiwall Units',
+    slug: 'hiwall',
+    title: 'Hiwall',
     group: 'mechanical',
     summary: 'Compact wall-mounted comfort with quick installation and low noise.',
     specialty: 'Space-saving room cooling for cabins, offices, and smaller zones.',
-    related: ['dx-system', 'vrf-system', 'hvac'],
+    related: ['hvac', 'dx-units', 'vrf-system'],
+  },
+  {
+    slug: 'dx-units',
+    title: 'DX Units',
+    group: 'mechanical',
+    summary: 'Direct-expansion comfort solutions for retail, offices, and compact facilities.',
+    specialty: 'Split and packaged units with quick-fit delivery and service access.',
+    related: ['hiwall', 'vrf-system', 'hvac'],
+  },
+  {
+    slug: 'vrf-system',
+    title: 'VRF/VRV System',
+    group: 'mechanical',
+    summary: 'Multi-zone comfort with low energy use and precise refrigerant-based zoning for offices, hotels, and mixed-use buildings.',
+    specialty: 'Multi-zone refrigerant routing, long piping runs, indoor unit selection, and controls.',
+    related: ['dx-units', 'hiwall', 'hvac'],
+  },
+  {
+    slug: 'chilled-water-system',
+    title: 'Chilled Water System',
+    group: 'mechanical',
+    summary: 'Efficient chilled-water plant planning with pumps, piping, and commissioning support.',
+    specialty: 'Equipment sizing, plant room layout, chilled-water piping, and optimization.',
+    related: ['hvac', 'vrf-system', 'dx-units'],
   },
 ]
 
@@ -707,6 +704,8 @@ export const projects = [
     duration: '14 months',
     technology: ['Chilled water plant', 'AHUs', 'BMS integration', 'TAB'],
     summary: 'A central plant upgrade with improved cooling efficiency, cleaner control logic, and a clearer maintenance path.',
+    image:
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       { title: 'Plant room', caption: 'Equipment arrangement and access planning' },
       { title: 'Air handling', caption: 'Air-side coordination and airflow control' },
@@ -723,6 +722,8 @@ export const projects = [
     duration: '8 months',
     technology: ['Hydrant network', 'Fire alarm', 'PA system', 'Extinguishers'],
     summary: 'A life-safety refresh covering alarm devices, emergency communication, and protection coverage across public areas.',
+    image:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       { title: 'Alarm room', caption: 'Zoning and panel coordination' },
       { title: 'Emergency devices', caption: 'Accessible life-safety coverage' },
@@ -739,6 +740,8 @@ export const projects = [
     duration: '11 months',
     technology: ['LT panels', 'Switchgear', 'Lighting controls', 'Solar-ready design'],
     summary: 'A phased retrofit to improve power distribution clarity, safety, and operating visibility in an occupied campus.',
+    image:
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       { title: 'Panel room', caption: 'Distribution and protection updates' },
       { title: 'Lighting', caption: 'Interior and exterior lighting upgrades' },
@@ -755,6 +758,8 @@ export const projects = [
     duration: '6 months',
     technology: ['Water treatment', 'Cold water network', 'Hot water loop', 'Rainwater routing'],
     summary: 'A utility upgrade focused on clean water, better pressure balance, and maintainable routing across production spaces.',
+    image:
+      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       { title: 'Treatment plant', caption: 'Water quality planning and treatment' },
       { title: 'Piping', caption: 'Utility routes and leak testing' },
@@ -771,6 +776,8 @@ export const projects = [
     duration: '9 months',
     technology: ['VRF zoning', 'Hiwall units', 'Controls', 'Commissioning'],
     summary: 'A fast-track cooling solution designed for distribution areas, offices, and support rooms with efficient zoning.',
+    image:
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       { title: 'Outdoor units', caption: 'Compact equipment arrangement' },
       { title: 'Indoor zoning', caption: 'Room-by-room comfort planning' },
@@ -787,6 +794,8 @@ export const projects = [
     duration: '7 months',
     technology: ['CCTV', 'VESDA', 'Voice alarm', 'Access control'],
     summary: 'A safety and security package spanning monitoring, early warning, and emergency communication.',
+    image:
+      'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       { title: 'Security room', caption: 'Operator visibility and response' },
       { title: 'Critical zones', caption: 'Early warning and suppression logic' },
@@ -999,6 +1008,7 @@ export const contactMethods = [
   {
     title: 'Phone',
     value: site.phone,
+    phones: site.phones,
   },
   {
     title: 'Email',
@@ -1012,10 +1022,10 @@ export const contactMethods = [
 
 export const footerLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
-  { label: 'Projects', path: '/projects' },
-  { label: 'AMC', path: '/annual-maintenance-contracts' },
   { label: 'About', path: '/about-us' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Services', path: '/services' },
+  { label: 'AMC', path: '/annual-maintenance-contracts' },
   { label: 'Careers', path: '/careers' },
   { label: 'Contact', path: '/contact' },
 ]
