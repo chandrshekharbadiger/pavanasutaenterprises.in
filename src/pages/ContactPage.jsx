@@ -1,8 +1,14 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useForm } from 'react-hook-form'
-import { FiMail, FiMapPin, FiPhoneCall, FiMessageCircle, FiClock, FiCheckCircle } from 'react-icons/fi'
-import { Breadcrumbs, ButtonLink, FaqAccordion, FormField, Seo, SectionHeading } from '../components'
+import {
+  FiClock,
+  FiMail,
+  FiMapPin,
+  FiMessageCircle,
+  FiPhoneCall,
+  FiShield,
+} from 'react-icons/fi'
+import { Breadcrumbs, ButtonLink, FaqAccordion, Seo, SectionHeading } from '../components'
+import { ContactInquiryForm } from '../inquiryComponents'
 import { buildUrl, contactMethods, site } from '../siteContent'
 
 const contactFaq = [
@@ -21,27 +27,6 @@ const contactFaq = [
 ]
 
 export function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm({
-    defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-    },
-  })
-
-  const onSubmit = async () => {
-    await new Promise((resolve) => window.setTimeout(resolve, 700))
-    reset()
-    setSubmitted(true)
-  }
-
   return (
     <div className="page-stack">
       <Seo
@@ -60,13 +45,14 @@ export function ContactPage() {
         ]}
       />
 
-      <section className="page-hero">
+      <section className="page-hero contact-hero">
         <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Contact' }]} />
         <p className="eyebrow">Contact</p>
-        <h1>Talk to the team.</h1>
+        <h1>Start the conversation with the engineering team.</h1>
         <p>
-          Use the contact options below if you need a project quote, site visit, AMC
-          discussion, or a quick technical call.
+          Use the modern enquiry flow below for project quotes, site visits, AMC discussions,
+          or a quick technical call. The layout stays simple, but the routing is built for
+          enterprise-grade follow-up.
         </p>
         <div className="hero-actions">
           <ButtonLink href={`tel:${site.phoneDigits}`} icon={FiPhoneCall}>
@@ -80,16 +66,16 @@ export function ContactPage() {
             WhatsApp
           </ButtonLink>
           <ButtonLink href="#contact-form" variant="outline">
-            Get Free Quote
+            Send Inquiry
           </ButtonLink>
         </div>
       </section>
 
       <section className="section-block">
         <SectionHeading
-          eyebrow="Office Address"
-          title="Visit or call during working hours."
-          summary="The contact section stays direct and practical for busy users."
+          eyebrow="Contact Points"
+          title="Visit, call, or write to us."
+          summary="The details stay practical and direct while the presentation feels more premium and structured."
         />
         <div className="contact-grid">
           {contactMethods.map((item) => {
@@ -99,14 +85,15 @@ export function ContactPage() {
               Email: FiMail,
               'Working Hours': FiClock,
             }
-            const Icon = icons[item.title] || FiCheckCircle
+            const Icon = icons[item.title] || FiShield
+
             return (
               <motion.article
                 key={item.title}
                 className="contact-card"
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.35 }}
               >
                 <Icon aria-hidden="true" />
@@ -131,64 +118,40 @@ export function ContactPage() {
 
       <section className="section-block" id="contact-form">
         <SectionHeading
-          eyebrow="Contact Form"
-          title="Tell us what you need."
-          summary="Validation keeps the form clean and makes it easier to route your enquiry."
+          eyebrow="Enquiries"
+          title="Share the brief and we will route it properly."
+          summary="The form keeps validation, privacy consent, spam protection, and response expectations in one place."
         />
-        <div className="quote-band quote-band-inline">
-          <form className="quote-form" onSubmit={handleSubmit(onSubmit)}>
-            <FormField label="Name" error={errors.name?.message}>
-              <input
-                type="text"
-                placeholder="Your name"
-                {...register('name', { required: 'Please enter your name.' })}
-              />
-            </FormField>
-            <FormField label="Email" error={errors.email?.message}>
-              <input
-                type="email"
-                placeholder="name@example.com"
-                {...register('email', {
-                  required: 'Please enter your email.',
-                  pattern: {
-                    value: /\S+@\S+\.\S+/,
-                    message: 'Please enter a valid email address.',
-                  },
-                })}
-              />
-            </FormField>
-            <FormField label="Phone" error={errors.phone?.message}>
-              <input
-                type="tel"
-                placeholder="Phone number"
-                {...register('phone', { required: 'Please enter your phone number.' })}
-              />
-            </FormField>
-            <FormField label="Message" error={errors.message?.message}>
-              <textarea
-                rows="5"
-                placeholder="Tell us about the project, AMC, or service request."
-                {...register('message', { required: 'Please enter a message.' })}
-              />
-            </FormField>
-            <button type="submit" className="button-link button-link-primary" disabled={isSubmitting}>
-              <span>{isSubmitting ? 'Sending...' : 'Send enquiry'}</span>
-            </button>
-            {submitted ? (
-              <div className="form-success">
-                <FiCheckCircle aria-hidden="true" />
-                <span>Thanks. Your enquiry has been received.</span>
-              </div>
-            ) : null}
-          </form>
-
-          <div className="quote-side">
-            <h3>Google Map</h3>
-            <p>
-              The map below opens in a familiar Google Maps frame for quick location
-              reference.
-            </p>
-            <div className="map-frame">
+        <div className="contact-inquiry-layout">
+          <motion.div
+            className="contact-inquiry-copy"
+            initial={{ opacity: 0, x: -18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="contact-copy-card">
+              <p className="enterprise-kicker">Why teams use this form</p>
+              <h3>Structured fields make faster follow-up possible.</h3>
+              <p>
+                From service selection to state and city routing, the information comes
+                through in a format the engineering team can act on quickly without extra
+                back-and-forth.
+              </p>
+            </div>
+            <div className="enterprise-promise-list">
+              {[
+                'Inline validation keeps submissions clean and complete',
+                'Cloudflare Turnstile support is built in for production spam protection',
+                'Customers receive a professional confirmation email automatically',
+              ].map((item) => (
+                <span key={item}>
+                  <FiShield aria-hidden="true" />
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="map-frame contact-map-frame">
               <iframe
                 title="AMC MEP Solutions location"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
@@ -196,6 +159,10 @@ export function ContactPage() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+          </motion.div>
+
+          <div className="enterprise-form-shell">
+            <ContactInquiryForm />
           </div>
         </div>
       </section>
@@ -211,9 +178,9 @@ export function ContactPage() {
 
       <section className="cta-band">
         <div className="cta-band-copy">
-          <p className="eyebrow">CTA</p>
-          <h2>Need a fast response?</h2>
-          <p>Call or WhatsApp and we’ll route the enquiry to the right team.</p>
+          <p className="eyebrow">Response Support</p>
+          <h2>Need a faster response path?</h2>
+          <p>Call or WhatsApp and we will route the enquiry to the right team immediately.</p>
         </div>
         <div className="cta-band-actions">
           <ButtonLink href={`tel:${site.phoneDigits}`} variant="primary">

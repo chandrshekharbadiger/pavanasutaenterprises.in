@@ -137,20 +137,32 @@ export const companyOverview = {
 
 export const workProcess = [
   {
-    title: 'Discovery',
-    description: 'We review drawings, site conditions, load demands, utility constraints, and delivery timelines.',
+    title: 'Requirement Discussion',
+    description: 'Understand client requirements and project scope.',
   },
   {
-    title: 'Design Alignment',
-    description: 'Layouts, equipment selections, and coordination notes are aligned with the project and budget.',
+    title: 'Site Inspection',
+    description: 'Visit project location and evaluate technical requirements.',
+  },
+  {
+    title: 'Design & Planning',
+    description: 'Prepare engineering drawings and execution plan.',
+  },
+  {
+    title: 'Quotation & Approval',
+    description: 'Submit detailed quotation and receive approval.',
   },
   {
     title: 'Execution',
-    description: 'Site teams install, coordinate, and document the work with structured QA checkpoints.',
+    description: 'Professional installation by certified engineers.',
   },
   {
-    title: 'Testing & Handover',
-    description: 'Systems are tested, balanced, commissioned, and handed over with operation guidance.',
+    title: 'Testing & Commissioning',
+    description: 'Complete testing and quality verification.',
+  },
+  {
+    title: 'Handover & AMC Support',
+    description: 'Deliver project with warranty and annual maintenance support.',
   },
 ]
 

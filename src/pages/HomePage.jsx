@@ -1,12 +1,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
+  FiClipboard,
   FiCheckCircle,
+  FiFileText,
   FiClock,
+  FiMapPin,
   FiMessageCircle,
   FiPhoneCall,
   FiShield,
   FiStar,
   FiTool,
+  FiUsers,
 } from 'react-icons/fi'
 import {
   Seo,
@@ -16,9 +20,10 @@ import {
   ServiceCard,
   ProjectCard,
   FaqAccordion,
-  Timeline,
+  ProcessTimeline,
   MiniGallery,
 } from '../components'
+import { QuoteRequestSection } from '../inquiryComponents'
 import {
   site,
   trustedSectors,
@@ -312,6 +317,8 @@ function CompanySection() {
 }
 
 function WorkProcessSection() {
+  const processIcons = [FiUsers, FiMapPin, FiFileText, FiClipboard, FiTool, FiCheckCircle, FiShield]
+
   return (
     <section className="section-block">
       <SectionHeading
@@ -319,7 +326,12 @@ function WorkProcessSection() {
         title="A clear path from brief to handover."
         summary="The sequence is easy to follow and easy to explain, which is exactly what project teams need when work gets busy."
       />
-      <Timeline items={workProcess} />
+      <ProcessTimeline
+        items={workProcess.map((item, index) => ({
+          ...item,
+          icon: processIcons[index],
+        }))}
+      />
     </section>
   )
 }
@@ -516,6 +528,7 @@ export function HomePage() {
       <CertificatesSection />
       <SafetySection />
       <LatestProjectsSection />
+      <QuoteRequestSection />
       <FAQSection />
       <CTASection />
     </div>

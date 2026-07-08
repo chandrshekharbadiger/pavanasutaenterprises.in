@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import {
   FiArrowRight,
+  FiBriefcase,
   FiChevronDown,
   FiChevronRight,
+  FiClipboard,
   FiMessageCircle,
   FiMapPin,
   FiPhone,
   FiStar,
+  FiShield,
+  FiTool,
+  FiWind,
 } from 'react-icons/fi'
 import { buildUrl, site } from './siteContent'
 
@@ -103,26 +108,126 @@ export function ButtonLink({
   className = '',
   ...rest
 }) {
+  const [ripple, setRipple] = useState(null)
   const classes = `button-link button-link-${variant} ${className}`.trim()
+  const createRipple = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const size = Math.max(rect.width, rect.height) * 1.15
+    const x = (event.clientX || rect.left + rect.width / 2) - rect.left - size / 2
+    const y = (event.clientY || rect.top + rect.height / 2) - rect.top - size / 2
+    setRipple({
+      key: `${Date.now()}-${Math.random()}`,
+      size,
+      x,
+      y,
+    })
+  }
+
+  useEffect(() => {
+    if (!ripple) {
+      return undefined
+    }
+
+    const timer = window.setTimeout(() => setRipple(null), 520)
+    return () => window.clearTimeout(timer)
+  }, [ripple])
+
   const content = (
     <>
-      <span>{children}</span>
-      {Icon ? <Icon aria-hidden="true" /> : null}
+      <span className="button-link-shine" aria-hidden="true" />
+      {ripple ? (
+        <span
+          key={ripple.key}
+          className="button-link-ripple"
+          aria-hidden="true"
+          style={{
+            width: ripple.size,
+            height: ripple.size,
+            left: ripple.x,
+            top: ripple.y,
+          }}
+        />
+      ) : null}
+      <span className="button-link-label">{children}</span>
+      {Icon ? (
+        <span className="button-link-icon" aria-hidden="true">
+          <Icon />
+        </span>
+      ) : null}
     </>
   )
 
   if (to) {
     return (
-      <Link className={classes} to={to} {...rest}>
+      <Link className={classes} to={to} onPointerDown={createRipple} {...rest}>
         {content}
       </Link>
     )
   }
 
   return (
-    <a className={classes} href={href} {...rest}>
+    <a className={classes} href={href} onPointerDown={createRipple} {...rest}>
       {content}
     </a>
+  )
+}
+
+export function ActionButton({
+  type = 'button',
+  variant = 'primary',
+  children,
+  icon: Icon = FiArrowRight,
+  className = '',
+  ...rest
+}) {
+  const [ripple, setRipple] = useState(null)
+  const classes = `button-link button-link-${variant} ${className}`.trim()
+
+  const createRipple = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const size = Math.max(rect.width, rect.height) * 1.15
+    const x = (event.clientX || rect.left + rect.width / 2) - rect.left - size / 2
+    const y = (event.clientY || rect.top + rect.height / 2) - rect.top - size / 2
+    setRipple({
+      key: `${Date.now()}-${Math.random()}`,
+      size,
+      x,
+      y,
+    })
+  }
+
+  useEffect(() => {
+    if (!ripple) {
+      return undefined
+    }
+
+    const timer = window.setTimeout(() => setRipple(null), 520)
+    return () => window.clearTimeout(timer)
+  }, [ripple])
+
+  return (
+    <button type={type} className={classes} onPointerDown={createRipple} {...rest}>
+      <span className="button-link-shine" aria-hidden="true" />
+      {ripple ? (
+        <span
+          key={ripple.key}
+          className="button-link-ripple"
+          aria-hidden="true"
+          style={{
+            width: ripple.size,
+            height: ripple.size,
+            left: ripple.x,
+            top: ripple.y,
+          }}
+        />
+      ) : null}
+      <span className="button-link-label">{children}</span>
+      {Icon ? (
+        <span className="button-link-icon" aria-hidden="true">
+          <Icon />
+        </span>
+      ) : null}
+    </button>
   )
 }
 
@@ -176,6 +281,14 @@ export function CountUpStat({ value, suffix = '', label, tone = 'default' }) {
 }
 
 export function ServiceCard({ service }) {
+  const serviceIcons = {
+    mechanical: FiWind,
+    fire: FiShield,
+    electrical: FiBriefcase,
+    plumbing: FiTool,
+  }
+  const Icon = serviceIcons[service.group] || FiClipboard
+
   return (
     <motion.article
       className="service-card"
@@ -186,16 +299,22 @@ export function ServiceCard({ service }) {
     >
       <div className="service-card-top">
         <span>{service.categoryLabel}</span>
+        <div className="service-card-media" aria-hidden="true">
+          <div className="service-card-media-ring" />
+          <Icon />
+        </div>
       </div>
-      <h3>{service.title}</h3>
-      <p>{service.summary}</p>
+      <div className="service-card-copy">
+        <h3>{service.title}</h3>
+        <p>{service.summary}</p>
+      </div>
       <ul>
         {service.features.slice(0, 3).map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <ButtonLink to={`/services/${service.slug}`} variant="outline">
-        View service
+      <ButtonLink to={`/services/${service.slug}`} variant="outline" className="service-card-cta">
+        Explore service
       </ButtonLink>
     </motion.article>
   )
@@ -348,6 +467,59 @@ export function Timeline({ items }) {
           </div>
         </motion.article>
       ))}
+    </div>
+  )
+}
+
+export function ProcessTimeline({ items }) {
+  const timelineRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 0.85', 'end 0.35'],
+  })
+  const lineFill = useTransform(scrollYProgress, [0, 1], [0, 1])
+
+  return (
+    <div ref={timelineRef} className="process-timeline">
+      <div className="process-track" aria-hidden="true">
+        <motion.span className="process-track-fill" style={{ scaleX: lineFill, scaleY: lineFill }} />
+      </div>
+      {items.map((item, index) => {
+        const Icon = item.icon || FiClipboard
+
+        return (
+          <motion.article
+            key={item.title}
+            className="process-step"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.45, delay: index * 0.05 }}
+            whileHover={{ y: -10 }}
+          >
+            <motion.div
+              className="process-step-number"
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.32, delay: index * 0.06 }}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </motion.div>
+            <motion.div
+              className="process-step-icon"
+              whileHover={{ rotate: 8, scale: 1.06 }}
+              transition={{ type: 'spring', stiffness: 220, damping: 14 }}
+            >
+              <Icon aria-hidden="true" />
+            </motion.div>
+            <div className="process-step-copy">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </motion.article>
+        )
+      })}
     </div>
   )
 }
