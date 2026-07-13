@@ -31,7 +31,7 @@ export function ContactPage() {
     <div className="page-stack">
       <Seo
         title="Contact"
-        description="Contact AMC MEP Solutions through phone, WhatsApp, email, contact form, or Google Map."
+        description="Contact Pavanasuta Enterprises through phone, WhatsApp, email, contact form, or Google Map."
         path="/contact"
         schema={[
           {
@@ -153,7 +153,7 @@ export function ContactPage() {
             </div>
             <div className="map-frame contact-map-frame">
               <iframe
-                title="AMC MEP Solutions location"
+                title="Pavanasuta Enterprises location"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

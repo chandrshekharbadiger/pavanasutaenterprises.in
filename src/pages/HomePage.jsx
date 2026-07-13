@@ -19,9 +19,9 @@ import {
   CountUpStat,
   ServiceCard,
   ProjectCard,
+  ProjectCarousel,
   FaqAccordion,
   ProcessTimeline,
-  MiniGallery,
 } from '../components'
 import { QuoteRequestSection } from '../inquiryComponents'
 import {
@@ -43,8 +43,8 @@ import {
 } from '../siteContent'
 
 const featuredServices = services.slice(0, 8)
-const featuredProjects = projects.slice(0, 4)
-const latestProjects = projects.slice(2, 6)
+const featuredProjects = [projects[0], projects[1], projects[7], projects[10]].filter(Boolean)
+const latestProjects = projects.filter((project) => project.status === 'Ongoing').slice(0, 5)
 
 function PageHero() {
   const reduceMotion = useReducedMotion()
@@ -447,11 +447,13 @@ function LatestProjectsSection() {
         title="Recent momentum across active sites."
         summary="The latest work shows how the team balances live operations, phased delivery, and practical support."
       />
-      <MiniGallery
-        image={site.accentImage}
+      <ProjectCarousel
+        label="Latest project highlights"
         items={latestProjects.map((project) => ({
           title: project.title,
-          caption: `${project.category} - ${project.status}`,
+          caption: project.summary,
+          eyebrow: `${project.category} / ${project.status}`,
+          meta: `${project.location} / ${project.stage}`,
           image: project.image,
         }))}
       />
