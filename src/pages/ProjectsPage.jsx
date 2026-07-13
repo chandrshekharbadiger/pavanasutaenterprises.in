@@ -1,7 +1,15 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiFilter, FiImage } from 'react-icons/fi'
-import { Breadcrumbs, ButtonLink, MiniGallery, ProjectCard, Seo, SectionHeading } from '../components'
+import {
+  Breadcrumbs,
+  ButtonLink,
+  MiniGallery,
+  ProjectCard,
+  ProjectCarousel,
+  Seo,
+  SectionHeading,
+} from '../components'
 import { buildUrl, projectFilters, projects, site } from '../siteContent'
 
 export function ProjectsPage() {
@@ -15,6 +23,13 @@ export function ProjectsPage() {
   const completed = filteredProjects.filter((project) => project.status === 'Completed')
   const ongoing = filteredProjects.filter((project) => project.status === 'Ongoing')
   const galleryItems = filteredProjects.slice(0, 3).flatMap((project) => project.gallery.slice(0, 1))
+  const carouselItems = filteredProjects.map((project) => ({
+    title: project.title,
+    caption: project.summary,
+    eyebrow: `${project.category} / ${project.status}`,
+    meta: `${project.location} / ${project.stage}`,
+    image: project.image,
+  }))
 
   return (
     <div className="page-stack">
@@ -37,11 +52,11 @@ export function ProjectsPage() {
       <section className="page-hero">
         <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Projects' }]} />
         <p className="eyebrow">Projects</p>
-        <h1>Premium engineering projects with real delivery detail.</h1>
+        <h1>Completed and ongoing project references from real field work.</h1>
         <p>
           Browse completed and ongoing projects across HVAC, fire protection, electrical,
-          and plumbing. Each project card links to a detail page with description,
-          location, client, gallery, technology, duration, and status.
+          and plumbing. Each project card now reflects the updated project list, real site
+          visuals, location, client, gallery, technology, stage, and status.
         </p>
         <div className="page-hero-actions">
           <ButtonLink to="/contact">Start a Project</ButtonLink>
@@ -72,6 +87,15 @@ export function ProjectsPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="section-block">
+        <SectionHeading
+          eyebrow="Project Carousel"
+          title="A moving view of live project visuals."
+          summary="The carousel adds motion while keeping the imagery tied to the supplied project set."
+        />
+        <ProjectCarousel items={carouselItems} label="Project highlights carousel" />
       </section>
 
       <section className="section-block">
@@ -112,6 +136,7 @@ export function ProjectsPage() {
             ? galleryItems.slice(0, 6).map((item) => ({
                 title: item.title,
                 caption: item.caption,
+                image: item.image,
               }))
             : [{ title: 'Engineering', caption: 'Representative project view' }]}
         />
@@ -126,10 +151,9 @@ export function ProjectsPage() {
           transition={{ duration: 0.4 }}
         >
           <FiImage aria-hidden="true" />
-          <strong>Project details pages include a deeper gallery, technology list, duration, and status view.</strong>
+          <strong>Project detail pages now include real project images, gallery views, technology lists, stage updates, and status.</strong>
         </motion.div>
       </section>
     </div>
   )
 }
-

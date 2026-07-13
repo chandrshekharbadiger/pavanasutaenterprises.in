@@ -27,7 +27,7 @@ export function AboutPage() {
     <div className="page-stack">
       <Seo
         title="About Us"
-        description="Learn about AMC MEP Solutions, our mission, values, engineers, quality policy, safety standards, and track record."
+        description="Learn about Pavanasuta Enterprises, our mission, values, engineers, quality policy, safety standards, and track record."
         path="/about-us"
         schema={[
           {

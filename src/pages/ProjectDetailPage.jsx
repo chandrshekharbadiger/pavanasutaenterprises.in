@@ -4,9 +4,9 @@ import { FiArrowRight, FiCheckCircle, FiStar } from 'react-icons/fi'
 import {
   Breadcrumbs,
   ButtonLink,
-  GalleryStrip,
   MiniGallery,
   ProjectCard,
+  ProjectCarousel,
   Seo,
   SectionHeading,
 } from '../components'
@@ -67,7 +67,7 @@ export function ProjectDetailPage() {
             <div className="hero-tags">
               <span>{project.status}</span>
               <span>{project.location}</span>
-              <span>{project.duration}</span>
+              <span>{project.stage}</span>
             </div>
             <div className="hero-bullets">
               {project.technology.map((item) => (
@@ -97,8 +97,8 @@ export function ProjectDetailPage() {
             transition={{ duration: 0.45 }}
           >
             <img
-              src={site.accentImage}
-              alt={`${project.title} visual`}
+              src={project.image || site.accentImage}
+              alt={project.title}
               loading="eager"
               decoding="async"
             />
@@ -107,8 +107,8 @@ export function ProjectDetailPage() {
               <span>{project.client}</span>
             </div>
             <div className="detail-hero-card detail-hero-card-bottom">
-              <strong>Delivery</strong>
-              <span>{project.status} - {project.duration}</span>
+              <strong>Project Stage</strong>
+              <span>{project.status} - {project.stage}</span>
             </div>
           </motion.div>
         </div>
@@ -134,8 +134,8 @@ export function ProjectDetailPage() {
               after the construction team demobilizes.
             </p>
             <p>
-              Location: {project.location}. Client: {project.client}. Duration:{' '}
-              {project.duration}. Category: {project.category}.
+              Location: {project.location}. Client: {project.client}. Current stage:{' '}
+              {project.stage}. Category: {project.category}.
             </p>
           </motion.div>
 
@@ -163,12 +163,18 @@ export function ProjectDetailPage() {
           summary="A project detail page needs visuals, even when the emphasis stays on the technical narrative."
         />
         <MiniGallery
-          image={site.accentImage}
+          image={project.image || site.accentImage}
           items={project.gallery}
         />
-        <GalleryStrip
-          items={project.gallery.map((item) => `${item.title} - ${item.caption}`)}
-          image={site.accentImage}
+        <ProjectCarousel
+          label={`${project.title} gallery carousel`}
+          items={project.gallery.map((item) => ({
+            title: item.title,
+            caption: item.caption,
+            eyebrow: project.title,
+            meta: `${project.category} / ${project.location}`,
+            image: item.image || project.image,
+          }))}
         />
       </section>
 
@@ -210,4 +216,3 @@ export function ProjectDetailPage() {
     </div>
   )
 }
-

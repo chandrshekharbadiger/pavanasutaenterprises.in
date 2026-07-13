@@ -42,10 +42,19 @@
   <url><loc>http://localhost:5173/services/hot-water-piping</loc></url>
   <url><loc>http://localhost:5173/services/rain-water-piping</loc></url>
   <url><loc>http://localhost:5173/services/solar-water-heater</loc></url>
-  <url><loc>http://localhost:5173/projects/central-plant-modernization</loc></url>
-  <url><loc>http://localhost:5173/projects/tower-fire-life-safety</loc></url>
-  <url><loc>http://localhost:5173/projects/campus-electrical-retrofit</loc></url>
-  <url><loc>http://localhost:5173/projects/pharma-plumbing-upgrade</loc></url>
-  <url><loc>http://localhost:5173/projects/warehouse-vrf-cooling</loc></url>
-  <url><loc>http://localhost:5173/projects/mixed-use-fire-and-cctv</loc></url>
+  <url><loc>http://localhost:5173/projects/bs-channabasappa-fire-fighting-davanagere</loc></url>
+  <url><loc>http://localhost:5173/projects/bkg-group-vrf-sandur</loc></url>
+  <url><loc>http://localhost:5173/projects/mango-hotel-fire-hydrant-alarm-extinguishers-davanagere</loc></url>
+  <url><loc>http://localhost:5173/projects/max-showroom-intrusion-alarm-fire-fighting-davanagere</loc></url>
+  <url><loc>http://localhost:5173/projects/upperigenahalli-led-street-lighting</loc></url>
+  <url><loc>http://localhost:5173/projects/chitradurga-house-building-electrification</loc></url>
+  <url><loc>http://localhost:5173/projects/mylar-sugars-house-dx-hubli</loc></url>
+  <url><loc>http://localhost:5173/projects/vishwaradya-cancer-hospital-plumbing-davanagere</loc></url>
+  <url><loc>http://localhost:5173/projects/fuego-solutions-hiwall-sindanur</loc></url>
+  <url><loc>http://localhost:5173/projects/malatesh-traders-house-dx-hubli</loc></url>
+  <url><loc>http://localhost:5173/projects/sri-jayadeva-heart-sciences-chilled-water-hubli</loc></url>
+  <url><loc>http://localhost:5173/projects/sri-cv-raman-general-hospital-dx-bangalore-urban</loc></url>
+  <url><loc>http://localhost:5173/projects/hotel-green-vrf-ankola</loc></url>
+  <url><loc>http://localhost:5173/projects/sudhiksha-multi-speciality-hospital-vrf-siruguppa</loc></url>
+  <url><loc>http://localhost:5173/projects/bmcrc-vims-critical-care-vrf-bellary</loc></url>
 </urlset>

@@ -6,6 +6,7 @@ import {
   FiArrowRight,
   FiBriefcase,
   FiChevronDown,
+  FiChevronLeft,
   FiChevronRight,
   FiClipboard,
   FiMessageCircle,
@@ -330,7 +331,7 @@ export function ProjectCard({ project }) {
       transition={{ duration: 0.45 }}
     >
       <div className="project-card-image">
-        <img src={project.image || site.accentImage} alt="" loading="lazy" decoding="async" />
+        <img src={project.image || site.accentImage} alt={project.title} loading="lazy" decoding="async" />
         <div className="project-card-overlay" aria-hidden="true" />
         <span className={`project-status project-status-${project.status.toLowerCase()}`}>
           {project.status}
@@ -348,7 +349,7 @@ export function ProjectCard({ project }) {
             <FiMapPin aria-hidden="true" /> {project.client}
           </span>
           <span>
-            <FiStar aria-hidden="true" /> {project.duration}
+            <FiStar aria-hidden="true" /> {project.stage}
           </span>
         </div>
         {project.technology ? (
@@ -363,6 +364,103 @@ export function ProjectCard({ project }) {
         </ButtonLink>
       </div>
     </motion.article>
+  )
+}
+
+export function ProjectCarousel({ items, label = 'Project highlights', interval = 4500 }) {
+  const reduceMotion = useReducedMotion()
+  const [activeIndex, setActiveIndex] = useState(0)
+  const safeItems = items || []
+
+  useEffect(() => {
+    if (safeItems.length < 2 || reduceMotion) return undefined
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % safeItems.length)
+    }, interval)
+
+    return () => window.clearInterval(timer)
+  }, [interval, reduceMotion, safeItems.length])
+
+  useEffect(() => {
+    setActiveIndex(0)
+  }, [safeItems.length])
+
+  if (!safeItems.length) return null
+
+  const activeItem = safeItems[activeIndex]
+  const goToPrevious = () => {
+    setActiveIndex((current) => (current - 1 + safeItems.length) % safeItems.length)
+  }
+  const goToNext = () => {
+    setActiveIndex((current) => (current + 1) % safeItems.length)
+  }
+
+  return (
+    <div className="project-carousel" aria-label={label}>
+      <div className="project-carousel-stage">
+        <AnimatePresence mode="wait">
+          <motion.article
+            key={`${activeItem.title}-${activeIndex}`}
+            className="project-carousel-slide"
+            initial={{ opacity: 0, x: 28 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -28 }}
+            transition={{ duration: 0.45 }}
+          >
+            <img
+              src={activeItem.image || site.accentImage}
+              alt={activeItem.title}
+              className="project-carousel-image"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="project-carousel-overlay" aria-hidden="true" />
+            <div className="project-carousel-copy">
+              {activeItem.eyebrow ? <p>{activeItem.eyebrow}</p> : null}
+              <strong>{activeItem.title}</strong>
+              {activeItem.caption ? <span>{activeItem.caption}</span> : null}
+              {activeItem.meta ? <small>{activeItem.meta}</small> : null}
+            </div>
+          </motion.article>
+        </AnimatePresence>
+
+        {safeItems.length > 1 ? (
+          <>
+            <button
+              type="button"
+              className="project-carousel-control project-carousel-control-prev"
+              onClick={goToPrevious}
+              aria-label="Previous project image"
+            >
+              <FiChevronLeft aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              className="project-carousel-control project-carousel-control-next"
+              onClick={goToNext}
+              aria-label="Next project image"
+            >
+              <FiChevronRight aria-hidden="true" />
+            </button>
+          </>
+        ) : null}
+      </div>
+
+      {safeItems.length > 1 ? (
+        <div className="project-carousel-dots" aria-label="Project image positions">
+          {safeItems.map((item, index) => (
+            <button
+              key={`${item.title}-${index}`}
+              type="button"
+              className={`project-carousel-dot ${index === activeIndex ? 'is-active' : ''}`}
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Show slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
   )
 }
 

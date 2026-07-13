@@ -4,7 +4,6 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   FiChevronDown,
   FiChevronRight,
-  FiGrid,
   FiMenu,
   FiPhoneCall,
   FiX,
@@ -189,7 +188,7 @@ export function SiteLayout() {
         <div className="site-header-inner">
           <Link className="brand" to="/" onClick={() => setMenuOpen(false)}>
             <span className="brand-mark">
-              <FiGrid aria-hidden="true" />
+              <img src={site.logo} alt={`${site.shortName} logo`} loading="eager" decoding="async" />
             </span>
             <span className="brand-copy">
               <strong>{site.shortName}</strong>
@@ -262,7 +261,7 @@ export function SiteLayout() {
           <div className="footer-brand">
             <Link className="brand" to="/">
               <span className="brand-mark">
-                <FiGrid aria-hidden="true" />
+                <img src={site.logo} alt={`${site.shortName} logo`} loading="lazy" decoding="async" />
               </span>
               <span className="brand-copy">
                 <strong>{site.shortName}</strong>
