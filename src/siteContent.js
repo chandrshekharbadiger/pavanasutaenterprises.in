@@ -1,19 +1,19 @@
 import {
-  FiActivity,
-  FiBookOpen,
-  FiBriefcase,
-  FiCheckCircle,
-  FiCpu,
-  FiDroplet,
-  FiHardDrive,
-  FiHeadphones,
-  FiHome,
-  FiLayers,
-  FiLock,
-  FiMonitor,
-  FiShield,
-  FiTool,
-  FiWind,
+    FiActivity,
+    FiBookOpen,
+    FiBriefcase,
+    FiCheckCircle,
+    FiCpu,
+    FiDroplet,
+    FiHardDrive,
+    FiHeadphones,
+    FiHome,
+    FiLayers,
+    FiLock,
+    FiMonitor,
+    FiShield,
+    FiTool,
+    FiWind,
 } from 'react-icons/fi'
 
 export const site = {
@@ -21,7 +21,7 @@ export const site = {
   shortName: 'Pavanasuta',
   tagline: 'Complete MEP engineering solutions for commercial, industrial, and residential projects.',
   description:
-    'Premium MEP engineering for HVAC, fire protection, electrical, plumbing, AMC, and facility operations.',
+    'Pavanasuta Enterprises provides comprehensive Mechanical, Electrical, and Plumbing (MEP) engineering solutions for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects. Our services are designed to deliver reliable, efficient, and sustainable building systems that meet the highest standards of quality and safety.',
   phone: '6361999504 / 8147838964',
   phones: [
     { number: '6361999504', digits: '+916361999504' },
@@ -128,10 +128,12 @@ export const whyChooseUs = [
 ]
 
 export const companyOverview = {
-  heading: 'Purpose-built engineering for demanding buildings.',
+  heading: 'Professional MEP Engineering You Can Trust',
   paragraphs: [
-    'Pavanasuta Enterprises delivers complete mechanical, electrical, plumbing, and fire-protection systems with a practical delivery standard. We focus on projects where reliability, operational clarity, and clean handover matter just as much as installation quality.',
-    'Our team supports clients from early sales discussions through commissioning and long-term maintenance. That means less friction between design intent, field work, and the realities of operations once the building is live.',
+    'Pavanasuta Enterprises is a professional Mechanical, Electrical, and Plumbing (MEP) engineering company dedicated to delivering reliable, efficient, and high-quality building services solutions.',
+    'We specialize in the design, installation, testing, commissioning, operation, and maintenance of MEP systems for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects.',
+    'With a commitment to engineering excellence, safety, and customer satisfaction, we provide innovative and cost-effective solutions tailored to the unique requirements of every project. Our experienced team combines technical expertise with industry best practices to ensure every project is completed on time, within budget, and to the highest quality standards.',
+    'At Pavanasuta Enterprises, we believe that successful projects are built on trust, integrity, and collaboration. By embracing modern technologies and sustainable engineering practices, we help create safe, energy-efficient, and future-ready buildings that deliver long-term value to our clients.',
   ],
 }
 
@@ -256,11 +258,13 @@ const categoryTemplates = {
   mechanical: {
     label: 'Mechanical Services',
     intro:
-      'Cooling and ventilation systems built for stable comfort, energy discipline, and maintainable plant rooms.',
+      'Heating, Ventilation, and Air Conditioning (HVAC) systems designed for reliable, efficient, and sustainable performance.',
     features: [
-      'Load-based equipment sizing and plant selection',
-      'Air-side and water-side coordination',
-      'Controls ready for commissioning and monitoring',
+      'Heating, Ventilation, and Air Conditioning (HVAC)',
+      'Ventilation and Exhaust Systems',
+      'Chilled Water and Refrigerant Piping',
+      'Equipment Installation and Commissioning',
+      'Mechanical Maintenance Services',
     ],
     benefits: [
       'Lower energy consumption and better uptime',
@@ -272,11 +276,18 @@ const categoryTemplates = {
   fire: {
     label: 'Fire Protection',
     intro:
-      'Life-safety systems that address detection, suppression, and emergency communication with code-aware discipline.',
+      'Comprehensive fire protection systems designed to keep your building and occupants safe.',
     features: [
-      'Alarm logic, zoning, and cause-and-effect planning',
-      'Suppression, hydrant, and extinguisher coverage',
-      'Emergency communication and monitoring integration',
+      'Fire Hydrant Systems',
+      'Automatic Sprinkler Systems',
+      'Fire Alarm and Detection Systems',
+      'Fire Pumps and Associated Piping',
+      'Testing and Commissioning',
+      'CCTV Surveillance Systems',
+      'Access Control Systems',
+      'Public Address Systems',
+      'Structured Cabling and Networking',
+      'Building Management Systems (BMS)',
     ],
     benefits: [
       'Faster response in critical situations',
@@ -288,11 +299,15 @@ const categoryTemplates = {
   electrical: {
     label: 'Electrical',
     intro:
-      'Reliable distribution and intelligent power systems planned for clarity, safety, and long-term operation.',
+      'Complete electrical installations and systems for all types of buildings and projects.',
     features: [
-      'Distribution boards, switchgear, and protection coordination',
-      'Lighting, power, and automation planning',
-      'Monitoring, metering, and solar integration support',
+      'HT & LT Electrical Installations',
+      'Internal and External Electrification',
+      'Power Distribution Systems',
+      'Lighting and Lighting Control Systems',
+      'Earthing and Lightning Protection',
+      'DG Set Installation',
+      'Electrical Testing and Commissioning',
     ],
     benefits: [
       'Safer power distribution across the facility',
@@ -304,11 +319,13 @@ const categoryTemplates = {
   plumbing: {
     label: 'Plumbing',
     intro:
-      'Water supply, treatment, drainage, and hot-water systems designed for clean routing and dependable service.',
+      'Full plumbing and water management systems for clean, reliable, and sustainable water supply and drainage.',
     features: [
-      'Pressure-balanced supply and drainage planning',
-      'Treatment, filtration, and water quality support',
-      'Hot-water, rainwater, and harvesting coordination',
+      'Water Supply and Distribution Systems',
+      'Drainage and Sewerage Systems',
+      'Storm Water Drainage',
+      'Pump Installation and Piping Works',
+      'Water Treatment and Plumbing Maintenance',
     ],
     benefits: [
       'Consistent water quality and pressure',
@@ -1175,20 +1192,20 @@ export const amcPlans = [
 
 export const amcMaintenance = [
   {
-    title: 'Preventive Maintenance',
+    title: 'MEP Testing and Commissioning',
+    description: 'Complete testing and commissioning of all MEP systems.',
+  },
+  {
+    title: 'Preventive and Corrective Maintenance',
     description: 'Regular visits to keep systems efficient, clean, and ready for demand spikes.',
   },
   {
-    title: 'Emergency Breakdown Support',
-    description: 'Fast response for unexpected failures, alarms, and operational interruptions.',
+    title: 'Annual Maintenance Contracts (AMC)',
+    description: 'Comprehensive annual maintenance contracts for all your systems.',
   },
   {
-    title: 'Routine Inspection',
-    description: 'Structured checks that catch wear, drift, and safety issues before they grow.',
-  },
-  {
-    title: 'Response Time',
-    description: 'Defined escalation paths and response windows for different asset priorities.',
+    title: 'Energy Optimization and System Performance Assessment',
+    description: 'Optimize energy usage and assess overall system performance.',
   },
 ]
 
@@ -1211,7 +1228,11 @@ export const amcFaq = [
 ]
 
 export const companyStory = [
-  'AMC MEP Solutions was built around a simple idea: engineering services should feel organized, responsive, and dependable from the first call to the last inspection.',
+  'Pavanasuta Enterprises was built around a simple idea: engineering services should feel organized, responsive, and dependable from the first call to the last inspection.',
+  'Our ongoing projects are managed with a strong focus on planning, technical excellence, timely execution, and strict adherence to quality and safety standards.',
+  'We work closely with clients, consultants, and contractors to ensure seamless coordination and successful project delivery.',
+  'Our completed projects reflect our expertise in delivering reliable Mechanical, Electrical, and Plumbing systems that are efficient, sustainable, and built to perform.',
+  'Every completed project demonstrates our commitment to customer satisfaction, engineering excellence, and long-term value.',
   'The team works across mechanical, electrical, plumbing, fire protection, and AMC delivery so clients do not have to manage fragmented vendors for critical building systems.',
 ]
 
@@ -1228,20 +1249,28 @@ export const missionVision = [
 
 export const coreValues = [
   {
-    title: 'Accountability',
-    description: 'We own the result, not just the task list.',
+    title: 'Engineering Excellence',
+    description: 'We deliver top-notch engineering solutions that meet the highest industry standards.',
   },
   {
-    title: 'Clarity',
-    description: 'Documentation and communication stay simple, direct, and usable.',
+    title: 'Quality Assurance',
+    description: 'We ensure every aspect of our work meets and exceeds quality expectations.',
   },
   {
-    title: 'Safety',
-    description: 'Every site decision respects people, assets, and operations.',
+    title: 'Safety First',
+    description: 'Safety is our top priority in every project we undertake.',
   },
   {
-    title: 'Craft',
-    description: 'Details matter in routing, access, finishing, and handover.',
+    title: 'Timely Project Delivery',
+    description: 'We are committed to completing every project on time, every time.',
+  },
+  {
+    title: 'Customer-Centric Solutions',
+    description: 'We tailor our services to meet the unique needs of each client.',
+  },
+  {
+    title: 'Sustainable and Energy-Efficient Practices',
+    description: 'We prioritize eco-friendly and energy-efficient solutions in all our work.',
   },
 ]
 
@@ -1320,16 +1349,20 @@ export const careerOpenings = [
 ]
 
 export const careerBenefits = [
-  'Structured project exposure across multiple disciplines',
-  'Supportive team culture with clear ownership',
-  'On-site learning and practical commissioning experience',
-  'Growth path from delivery to operations support',
+  'Professional growth and career development',
+  'Exposure to diverse MEP projects',
+  'Safe, inclusive, and collaborative work environment',
+  'Continuous learning and technical training',
+  'Performance-driven culture with opportunities for advancement',
 ]
 
 export const cultureNotes = [
-  'We value steady communication over noisy process.',
-  'We prefer clean handovers, visible documentation, and practical problem solving.',
-  'We work best with people who take pride in the work and the team around it.',
+  'At Pavanasuta Enterprises, we believe our people are the foundation of our success.',
+  'We are committed to creating a workplace that encourages learning, innovation, teamwork, and professional growth.',
+  'We welcome passionate, skilled, and motivated individuals who are eager to build a rewarding career in the MEP industry.',
+  'Whether you are an experienced professional or a recent graduate, we offer opportunities to develop your technical expertise, take on challenging projects, and grow within a supportive and collaborative environment.',
+  'If you are committed to excellence and ready to contribute to high-quality engineering solutions, we invite you to become part of the Pavanasuta Enterprises team.',
+  'Join us and help build the future through engineering excellence.',
 ]
 
 export const hiringProcess = [
