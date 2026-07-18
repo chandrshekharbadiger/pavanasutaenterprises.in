@@ -1,9 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
-  FiClipboard,
   FiCheckCircle,
-  FiFileText,
+  FiClipboard,
   FiClock,
+  FiFileText,
   FiMapPin,
   FiMessageCircle,
   FiPhoneCall,
@@ -13,33 +13,33 @@ import {
   FiUsers,
 } from 'react-icons/fi'
 import {
-  Seo,
-  SectionHeading,
   ButtonLink,
   CountUpStat,
-  ServiceCard,
-  ProjectCard,
-  ProjectCarousel,
   FaqAccordion,
   ProcessTimeline,
+  ProjectCard,
+  ProjectCarousel,
+  SectionHeading,
+  Seo,
+  ServiceCard,
 } from '../components'
 import { QuoteRequestSection } from '../inquiryComponents'
 import {
-  site,
-  trustedSectors,
-  heroStats,
-  industries,
-  whyChooseUs,
-  companyOverview,
-  workProcess,
-  testimonials,
-  certificates,
-  safetyStandards,
-  homeFaq,
-  projects,
-  services,
-  serviceHighlights,
   buildUrl,
+  certificates,
+  companyOverview,
+  heroStats,
+  homeFaq,
+  industries,
+  projects,
+  safetyStandards,
+  serviceHighlights,
+  services,
+  site,
+  testimonials,
+  trustedSectors,
+  whyChooseUs,
+  workProcess,
 } from '../siteContent'
 
 const featuredServices = services.slice(0, 8)
@@ -52,7 +52,7 @@ function PageHero() {
   return (
     <section className="hero-section home-hero">
       <Seo
-        title="MEP Engineering Solutions"
+        title="PavanasutaEnterprises"
         description="Complete MEP engineering solutions for HVAC, fire protection, electrical, plumbing, AMC, and responsive field support."
         path="/"
         schema={[

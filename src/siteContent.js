@@ -22,7 +22,7 @@ import {
 
 export const site = {
   name: 'PAVANASUTA ENTERPRISES',
-  shortName: 'Pavanasuta',
+  shortName: '',
   tagline: 'Complete MEP engineering solutions for commercial, industrial, and residential projects.',
   description:
     'Pavanasuta Enterprises provides comprehensive Mechanical, Electrical, and Plumbing (MEP) engineering solutions for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects. Our services are designed to deliver reliable, efficient, and sustainable building systems that meet the highest standards of quality and safety.',
