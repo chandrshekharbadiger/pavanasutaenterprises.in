@@ -1,19 +1,23 @@
 import {
-    FiActivity,
-    FiBookOpen,
-    FiBriefcase,
-    FiCheckCircle,
-    FiCpu,
-    FiDroplet,
-    FiHardDrive,
-    FiHeadphones,
-    FiHome,
-    FiLayers,
-    FiLock,
-    FiMonitor,
-    FiShield,
-    FiTool,
-    FiWind,
+  FiActivity,
+  FiBookOpen,
+  FiBriefcase,
+  FiCheckCircle,
+  FiCode,
+  FiCpu,
+  FiDroplet,
+  FiFileText,
+  FiGift,
+  FiHardDrive,
+  FiHeadphones,
+  FiHome,
+  FiLayers,
+  FiLock,
+  FiMonitor,
+  FiPhone,
+  FiShield,
+  FiTool,
+  FiWind
 } from 'react-icons/fi'
 
 export const site = {
@@ -22,10 +26,9 @@ export const site = {
   tagline: 'Complete MEP engineering solutions for commercial, industrial, and residential projects.',
   description:
     'Pavanasuta Enterprises provides comprehensive Mechanical, Electrical, and Plumbing (MEP) engineering solutions for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects. Our services are designed to deliver reliable, efficient, and sustainable building systems that meet the highest standards of quality and safety.',
-  phone: '6361999504 / 8147838964',
+  phone: '6361999504',
   phones: [
     { number: '6361999504', digits: '+916361999504' },
-    { number: '8147838964', digits: '+918147838964' },
   ],
   phoneDigits: '+916361999504',
   whatsapp: '+916361999504',
@@ -34,7 +37,7 @@ export const site = {
   workingHours: 'Mon - Sat, 8:30 AM - 7:00 PM',
   siteUrl: import.meta.env.VITE_SITE_URL || 'http://localhost:5173',
   logo: '/assets/projects/pavanasuta-logo.png',
-  accentImage: '/assets/projects/ongoing-hospital-road.jpeg',
+  accentImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
 }
 
 export const buildUrl = (path = '/') => {
@@ -388,20 +391,12 @@ const makeService = (service) => ({
 
 const mechanicalServices = [
   {
-    slug: 'hvac',
-    title: 'HVAC',
-    group: 'mechanical',
-    summary: 'Full-spectrum cooling, ventilation, ducting, and controls for occupiable and critical environments.',
-    specialty: 'Chilled-water plants, air handling, ducting, TAB, and BMS integration.',
-    related: ['hiwall', 'dx-units', 'vrf-system', 'chilled-water-system'],
-  },
-  {
     slug: 'hiwall',
     title: 'Hiwall',
     group: 'mechanical',
     summary: 'Compact wall-mounted comfort with quick installation and low noise.',
     specialty: 'Space-saving room cooling for cabins, offices, and smaller zones.',
-    related: ['hvac', 'dx-units', 'vrf-system'],
+    related: ['dx-units', 'vrf-system'],
   },
   {
     slug: 'dx-units',
@@ -409,7 +404,7 @@ const mechanicalServices = [
     group: 'mechanical',
     summary: 'Direct-expansion comfort solutions for retail, offices, and compact facilities.',
     specialty: 'Split and packaged units with quick-fit delivery and service access.',
-    related: ['hiwall', 'vrf-system', 'hvac'],
+    related: ['hiwall', 'vrf-system'],
   },
   {
     slug: 'vrf-system',
@@ -417,7 +412,7 @@ const mechanicalServices = [
     group: 'mechanical',
     summary: 'Multi-zone comfort with low energy use and precise refrigerant-based zoning for offices, hotels, and mixed-use buildings.',
     specialty: 'Multi-zone refrigerant routing, long piping runs, indoor unit selection, and controls.',
-    related: ['dx-units', 'hiwall', 'hvac'],
+    related: ['dx-units', 'hiwall'],
   },
   {
     slug: 'chilled-water-system',
@@ -425,7 +420,7 @@ const mechanicalServices = [
     group: 'mechanical',
     summary: 'Efficient chilled-water plant planning with pumps, piping, and commissioning support.',
     specialty: 'Equipment sizing, plant room layout, chilled-water piping, and optimization.',
-    related: ['hvac', 'vrf-system', 'dx-units'],
+    related: ['vrf-system', 'dx-units'],
   },
 ]
 
@@ -675,7 +670,7 @@ export const services = [...mechanicalServices, ...fireServices, ...electricalSe
 export const serviceGroups = [
   {
     key: 'mechanical',
-    title: 'Mechanical Services',
+    title: 'HVAC Services',
     description: categoryTemplates.mechanical.intro,
     slugs: mechanicalServices.map((item) => item.slug),
     icon: FiWind,
@@ -733,22 +728,22 @@ export const projects = [
     stage: 'Operational handover complete',
     technology: ['Fire fighting system', 'Hydrant coverage', 'Fire piping', 'Final testing'],
     summary: 'Delivered a complete fire-fighting package with field coordination, clean routing, and handover-ready life-safety support.',
-    image: '/assets/projects/fire-hose-cabinet.jpeg',
+    image: 'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Fire cabinet installation',
         caption: 'Finished hose cabinet and access arrangement on site.',
-        image: '/assets/projects/fire-hose-cabinet.jpeg',
+        image: 'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Ceiling interface',
         caption: 'Coordinated ceiling services for protection coverage and inspection access.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Service coordination',
         caption: 'Routing discipline that keeps the fire-protection network organized.',
-        image: '/assets/projects/electrical-conduits.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -762,22 +757,22 @@ export const projects = [
     stage: 'Commissioned and delivered',
     technology: ['VRF system', 'Cassette indoor units', 'Ceiling coordination', 'Control commissioning'],
     summary: 'Installed and commissioned a VRF cooling solution for reliable zoning, neat finishing, and day-to-day operating simplicity.',
-    image: '/assets/projects/cassette-close.jpeg',
+    image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Cassette unit finish',
         caption: 'Installed cassette unit with clean panel fit and ceiling alignment.',
-        image: '/assets/projects/cassette-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Corridor execution',
         caption: 'Long-run indoor coverage arranged for even comfort distribution.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Air distribution',
         caption: 'Completed ceiling diffusers and outlet layout for balanced airflow.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -791,22 +786,22 @@ export const projects = [
     stage: 'Protection package completed',
     technology: ['Fire hydrant', 'Fire alarm', 'Extinguishers', 'Life-safety checks'],
     summary: 'Executed a combined hydrant, alarm, and extinguisher package for dependable life-safety coverage in a hospitality environment.',
-    image: '/assets/projects/fire-hose-cabinet.jpeg',
+    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Hydrant point',
         caption: 'Accessible fire-hose cabinet installation for quick emergency response.',
-        image: '/assets/projects/fire-hose-cabinet.jpeg',
+        image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Detection coverage',
         caption: 'Ceiling-level device integration aligned with the finished corridor ceiling.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Final readiness',
         caption: 'Completed interior coordination for protection devices and service visibility.',
-        image: '/assets/projects/hvac-duct-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -820,22 +815,22 @@ export const projects = [
     stage: 'Operational handover complete',
     technology: ['Intrusion alarm', 'Fire fighting system', 'Monitoring devices', 'Integrated coordination'],
     summary: 'Delivered a combined security and fire-fighting scope with organized routing and a simple monitoring-ready installation.',
-    image: '/assets/projects/fire-hose-cabinet.jpeg',
+    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Fire and security point',
         caption: 'Wall-mounted fire-protection hardware integrated into the finished interior.',
-        image: '/assets/projects/fire-hose-cabinet.jpeg',
+        image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Cable routing',
         caption: 'Neat conduit routing for device connectivity and future access.',
-        image: '/assets/projects/electrical-conduits.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Ceiling coordination',
         caption: 'Service alignment that keeps detection and route access practical.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -849,22 +844,22 @@ export const projects = [
     stage: 'Installed and energized',
     technology: ['LED street lighting', 'Outdoor wiring', 'Field-side electrification', 'Support installation'],
     summary: 'Installed a practical LED lighting setup for field access routes with dependable electrical routing and outdoor-ready execution.',
-    image: '/assets/projects/electrical-conduits.jpeg',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Electrical routing',
         caption: 'Structured conduit runs that support a reliable outdoor lighting network.',
-        image: '/assets/projects/electrical-conduits.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Field-side access',
         caption: 'Representative site environment for the completed outdoor lighting work.',
-        image: '/assets/projects/ongoing-hospital-road.jpeg',
+        image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Power organization',
         caption: 'Execution focused on maintainability and straightforward future servicing.',
-        image: '/assets/projects/hospital-exterior-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -878,22 +873,22 @@ export const projects = [
     stage: 'Electrification completed',
     technology: ['Building electrification', 'Internal wiring', 'Switch points', 'Service routing'],
     summary: 'Completed building electrification with organized wiring routes, distribution clarity, and ready-to-use interior service points.',
-    image: '/assets/projects/electrical-conduits.jpeg',
+    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Wiring layout',
         caption: 'Clean vertical and horizontal routing for multiple points and controls.',
-        image: '/assets/projects/electrical-conduits.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Ceiling coordination',
         caption: 'Integrated electrical work through the interior ceiling grid.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Final finish',
         caption: 'Finished interior route planning that supports maintenance access.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -907,22 +902,22 @@ export const projects = [
     stage: 'Commissioned and handed over',
     technology: ['DX system', 'Air-side coordination', 'Indoor units', 'Cooling distribution'],
     summary: 'Delivered a DX cooling installation designed for dependable room-level comfort and straightforward operation after handover.',
-    image: '/assets/projects/cassette-corridor.jpeg',
+    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Indoor cooling coverage',
         caption: 'Finished DX unit installation along a large internal circulation zone.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Unit close-up',
         caption: 'Cassette finish arranged for clean ceiling integration and service access.',
-        image: '/assets/projects/cassette-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Air distribution',
         caption: 'Balanced output layout through the completed ceiling pattern.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -936,22 +931,22 @@ export const projects = [
     stage: 'Plumbing scope completed',
     technology: ['Plumbing work', 'Pipe routing', 'Hospital utility support', 'Service coordination'],
     summary: 'Delivered hospital plumbing work with disciplined pipe routing, access-aware coordination, and a clean utility installation path.',
-    image: '/assets/projects/plant-piping-grid.jpeg',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Pipe routing',
         caption: 'Exposed service layout showing clean support spacing and routing order.',
-        image: '/assets/projects/plant-piping-grid.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Coordination zone',
         caption: 'Hospital service corridor prepared for multi-discipline utility distribution.',
-        image: '/assets/projects/hvac-duct-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Site infrastructure',
         caption: 'Representative healthcare-campus exterior from the supplied project set.',
-        image: '/assets/projects/hospital-exterior-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -965,22 +960,22 @@ export const projects = [
     stage: 'Installation completed',
     technology: ['Hiwall system', 'Indoor unit installation', 'Room cooling', 'Finishing coordination'],
     summary: 'Installed a hiwall air-conditioning solution with a simple maintenance approach and clean room-side presentation.',
-    image: '/assets/projects/hiwall-indoor-unit.jpeg',
+    image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Hiwall indoor unit',
         caption: 'Wall-mounted cooling unit installed and aligned for direct room service.',
-        image: '/assets/projects/hiwall-indoor-unit.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Ceiling service zone',
         caption: 'Interior ceiling coordination supporting the final HVAC fit-out.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Air-side execution',
         caption: 'Representative HVAC fit-out scene from the supplied project images.',
-        image: '/assets/projects/hvac-duct-room.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -994,22 +989,22 @@ export const projects = [
     stage: 'Commissioned and delivered',
     technology: ['DX system', 'Cassette units', 'Interior cooling', 'Final testing'],
     summary: 'Completed a DX air-conditioning scope with clean cassette placement and a practical cooling layout for occupied interiors.',
-    image: '/assets/projects/cassette-close.jpeg',
+    image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Cassette installation',
         caption: 'Close-up of the installed cassette unit and finished panel fit.',
-        image: '/assets/projects/cassette-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Interior coverage',
         caption: 'Large corridor run showing the reach of the cooling layout.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Distribution point',
         caption: 'Completed diffuser layout that supports even airflow across the ceiling grid.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -1023,22 +1018,22 @@ export const projects = [
     stage: 'Installation in progress',
     technology: ['500 TR chilled water system', 'Ducting', 'Pipe coordination', 'Healthcare HVAC'],
     summary: 'A large healthcare HVAC installation progressing through chilled-water distribution, ducting, and coordinated hospital fit-out.',
-    image: '/assets/projects/ongoing-hospital-road.jpeg',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Project exterior',
         caption: 'Regional heart-centre building frontage from the active project photo set.',
-        image: '/assets/projects/ongoing-hospital-road.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Duct corridor',
         caption: 'Long HVAC duct run under execution across the circulation corridor.',
-        image: '/assets/projects/hvac-duct-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Pipe coordination',
         caption: 'Service-grid view showing the piping and ceiling coordination still underway.',
-        image: '/assets/projects/plant-piping-grid.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -1052,22 +1047,22 @@ export const projects = [
     stage: 'Interior fit-out in progress',
     technology: ['100 TR DX system', 'Critical care cooling', 'Ceiling grid integration', 'Hospital interiors'],
     summary: 'Ongoing DX system execution for a critical-care block with active coordination between cooling hardware, ceiling finishing, and services.',
-    image: '/assets/projects/ongoing-hospital-front.jpeg',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Hospital frontage',
         caption: 'Site exterior from the live project image set supplied for healthcare work.',
-        image: '/assets/projects/ongoing-hospital-front.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Interior corridor',
         caption: 'Ceiling and services progressing through the hospital circulation zone.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'DX indoor coverage',
         caption: 'Cassette-based cooling work advancing across the main interior corridor.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -1081,22 +1076,22 @@ export const projects = [
     stage: 'Installation and finishing',
     technology: ['116 HP VRF system', 'Cassette units', 'Hospitality cooling', 'Room-by-room zoning'],
     summary: 'A VRF installation for hospitality spaces with ongoing indoor-unit finishing, ceiling integration, and air-distribution setup.',
-    image: '/assets/projects/cassette-close.jpeg',
+    image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Cassette unit',
         caption: 'Installed indoor unit selected as the main visual for the VRF hospitality scope.',
-        image: '/assets/projects/cassette-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Long corridor coverage',
         caption: 'Continuous interior run prepared for comfort distribution across a large occupied zone.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Ceiling finish',
         caption: 'Visible ceiling-grid coordination supporting the final hospitality fit-out.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -1110,22 +1105,22 @@ export const projects = [
     stage: 'Execution in progress',
     technology: ['222 HP VRF system', 'Hospital HVAC', 'Cassette units', 'Ceiling services'],
     summary: 'Ongoing VRF execution for a hospital environment where comfort delivery, service coordination, and maintainability all matter.',
-    image: '/assets/projects/hospital-exterior-close.jpeg',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Site exterior',
         caption: 'Healthcare building exterior from the supplied active project visuals.',
-        image: '/assets/projects/hospital-exterior-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Ceiling and services',
         caption: 'In-progress ceiling coordination supporting the larger hospital cooling scope.',
-        image: '/assets/projects/ceiling-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Indoor cooling setup',
         caption: 'Cassette-based execution aligned with the interior circulation layout.',
-        image: '/assets/projects/cassette-corridor.jpeg',
+        image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -1139,22 +1134,22 @@ export const projects = [
     stage: 'Mechanical and ceiling coordination',
     technology: ['115 HP VRF system', 'Critical care block', 'Duct support works', 'Indoor unit fit-out'],
     summary: 'A hospital VRF package moving through active coordination between HVAC services, ceiling interfaces, and critical-care interior requirements.',
-    image: '/assets/projects/ongoing-hospital-road.jpeg',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     gallery: [
       {
         title: 'Campus approach',
         caption: 'Representative healthcare-campus approach shot from the active site set.',
-        image: '/assets/projects/ongoing-hospital-road.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Duct execution',
         caption: 'Mechanical works progressing through the corridor service zone.',
-        image: '/assets/projects/hvac-duct-room.jpeg',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
       },
       {
         title: 'Indoor distribution',
         caption: 'Cooling hardware and ceiling coordination continuing toward final fit-out.',
-        image: '/assets/projects/cassette-close.jpeg',
+        image: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=800&q=80',
       },
     ],
   },
@@ -1304,15 +1299,17 @@ export const qualityPolicy = [
 ]
 
 export const timeline = [
-  { year: '2007', title: 'Engineering team formed', description: 'Focused on building services execution and plant room delivery.' },
-  { year: '2012', title: 'Multi-discipline expansion', description: 'Mechanical, electrical, plumbing, and fire scopes came under one roof.' },
-  { year: '2018', title: 'AMC and service growth', description: 'Expanded into long-term maintenance and response contracts.' },
-  { year: '2025', title: 'Premium digital experience', description: 'Launched a modern website and stronger project storytelling.' },
+  { year: '2021', title: 'Company Formed', description: 'Pavanasuta Enterprises was established to provide quality engineering services.' },
+  { year: '2022', title: 'Started Fire Fighting Solutions', description: 'Expanded into Fire Fighting systems and installation services.' },
+  { year: '2023', title: 'Expanded to Complete MEP Solutions', description: 'Started providing Mechanical, Electrical, Plumbing and Fire Protection services under one company.' },
+  { year: '2024', title: 'Started Executing Small Projects', description: 'Successfully completed residential and commercial MEP projects across Karnataka.' },
+  { year: '2025', title: 'Expanded to Hubli', description: 'Started executing Government Projects along with private sector projects.' },
+  { year: '2026', title: 'Expanded Across North Karnataka', description: 'Serving multiple districts with complete MEP engineering solutions and AMC support.' },
 ]
 
 export const aboutStats = [
-  { label: 'Projects Delivered', value: 420, suffix: '+' },
-  { label: 'Cities Served', value: 24, suffix: '+' },
+  { label: 'Completed Projects', value: 10, suffix: '' },
+  { label: 'Cities Covered', value: 10, suffix: '' },
   { label: 'Uptime Focus', value: 99, suffix: '.2%' },
   { label: 'Client Retention', value: 92, suffix: '%' },
 ]
@@ -1366,10 +1363,10 @@ export const cultureNotes = [
 ]
 
 export const hiringProcess = [
-  { title: 'Apply online', description: 'Submit the form and attach a current resume.' },
-  { title: 'Screening call', description: 'We confirm experience, role fit, and expectations.' },
-  { title: 'Technical discussion', description: 'The team reviews scope knowledge and working style.' },
-  { title: 'Offer and onboarding', description: 'Selected candidates receive the next steps and joining plan.' },
+  { title: 'Apply online', description: 'Submit the form and attach a current resume.', icon: FiFileText },
+  { title: 'Screening call', description: 'We confirm experience, role fit, and expectations.', icon: FiPhone },
+  { title: 'Technical discussion', description: 'The team reviews scope knowledge and working style.', icon: FiCode },
+  { title: 'Offer and onboarding', description: 'Selected candidates receive the next steps and joining plan.', icon: FiGift },
 ]
 
 export const contactMethods = [

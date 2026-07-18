@@ -1,29 +1,29 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useMemo, useState } from 'react'
 import {
-  FiChevronDown,
-  FiChevronRight,
-  FiMenu,
-  FiPhoneCall,
-  FiX,
+    FiChevronDown,
+    FiChevronRight,
+    FiMenu,
+    FiPhoneCall,
+    FiX,
 } from 'react-icons/fi'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
-  navLinks,
-  serviceGroups,
-  serviceLookup,
-  site,
-  footerLinks,
-  socialLinks,
-  contactMethods,
-} from '../siteContent'
-import {
-  BackToTop,
-  ButtonLink,
-  CookieBanner,
-  FloatingContacts,
-  LoadingScreen,
+    BackToTop,
+    ButtonLink,
+    CookieBanner,
+    FloatingContacts,
+    LoadingScreen,
 } from '../components'
+import {
+    contactMethods,
+    footerLinks,
+    navLinks,
+    serviceGroups,
+    serviceLookup,
+    site,
+    socialLinks,
+} from '../siteContent'
 
 function useScrollState() {
   const [state, setState] = useState({ top: true, visibleTop: false })
@@ -101,12 +101,20 @@ function MobileMenu({ open, onClose }) {
       {open ? (
         <motion.div
           className="mobile-menu"
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.22 }}
+          initial={{ opacity: 0, x: '100%' }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: '100%' }}
+          transition={{ duration: 0.3, type: 'tween' }}
         >
           <div className="mobile-menu-inner">
+            <button 
+              type="button" 
+              className="mobile-menu-close" 
+              onClick={onClose}
+              aria-label="Close menu"
+            >
+              <FiX aria-hidden="true" />
+            </button>
             <div className="mobile-menu-links">
               {navLinks.map((item) => (
                 <NavLink key={item.path} to={item.path} onClick={onClose}>
@@ -191,8 +199,7 @@ export function SiteLayout() {
               <img src={site.logo} alt={`${site.shortName} logo`} loading="eager" decoding="async" />
             </span>
             <span className="brand-copy">
-              <strong>{site.shortName}</strong>
-              <span>{site.tagline}</span>
+              <strong>{site.name}</strong>
             </span>
           </Link>
 

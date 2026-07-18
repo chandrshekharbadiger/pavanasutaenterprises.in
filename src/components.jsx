@@ -1,22 +1,22 @@
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { FaWhatsapp } from 'react-icons/fa6'
 import {
-  FiArrowRight,
-  FiBriefcase,
-  FiChevronDown,
-  FiChevronLeft,
-  FiChevronRight,
-  FiClipboard,
-  FiMessageCircle,
-  FiMapPin,
-  FiPhone,
-  FiStar,
-  FiShield,
-  FiTool,
-  FiWind,
+    FiArrowRight,
+    FiBriefcase,
+    FiChevronDown,
+    FiChevronLeft,
+    FiChevronRight,
+    FiClipboard,
+    FiMapPin,
+    FiPhone,
+    FiShield,
+    FiStar,
+    FiTool,
+    FiWind,
 } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import { buildUrl, site } from './siteContent'
 
 export function Seo({
@@ -728,17 +728,23 @@ export function CookieBanner({ accepted, onAccept }) {
 export function FloatingContacts() {
   return (
     <div className="floating-contacts" aria-label="Quick contact buttons">
-      <a className="floating-contact call" href={`tel:${site.phoneDigits}`} aria-label="Call now">
+      <a 
+        className="floating-contact call" 
+        href={`tel:${site.phoneDigits}`} 
+        aria-label="Call now"
+      >
         <FiPhone aria-hidden="true" />
+        <span className="floating-contact-label">Call Now</span>
       </a>
       <a
         className="floating-contact whatsapp"
         href={`https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}`}
         target="_blank"
         rel="noreferrer"
-        aria-label="WhatsApp"
+        aria-label="Chat on WhatsApp"
       >
-        <FiMessageCircle aria-hidden="true" />
+        <FaWhatsapp aria-hidden="true" />
+        <span className="floating-contact-label">Chat on WhatsApp</span>
       </a>
     </div>
   )

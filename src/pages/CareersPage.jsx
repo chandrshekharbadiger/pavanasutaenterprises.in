@@ -1,21 +1,21 @@
-import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
-import { FiUpload, FiUsers, FiCheckCircle, FiBriefcase } from 'react-icons/fi'
+import { FiBriefcase, FiCheckCircle, FiUpload, FiUsers } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
 import {
-  Breadcrumbs,
-  ButtonLink,
-  FormField,
-  Seo,
-  SectionHeading,
-  Timeline,
+    Breadcrumbs,
+    ButtonLink,
+    FormField,
+    ProcessTimeline,
+    SectionHeading,
+    Seo,
 } from '../components'
 import {
-  buildUrl,
-  careerBenefits,
-  careerOpenings,
-  cultureNotes,
-  hiringProcess,
+    buildUrl,
+    careerBenefits,
+    careerOpenings,
+    cultureNotes,
+    hiringProcess,
 } from '../siteContent'
 
 export function CareersPage() {
@@ -166,7 +166,7 @@ export function CareersPage() {
           title="Simple, transparent, and respectful."
           summary="Candidates should know where they stand and what happens next."
         />
-        <Timeline items={hiringProcess} />
+        <ProcessTimeline items={hiringProcess} />
       </section>
 
       <section className="section-block" id="apply">
