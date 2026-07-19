@@ -12,7 +12,6 @@ import {
     BackToTop,
     ButtonLink,
     CookieBanner,
-    FloatingContacts,
     LoadingScreen,
 } from '../components'
 import {
@@ -325,9 +324,7 @@ export function SiteLayout() {
           </div>
         </div>
       </footer>
-
-      <FloatingContacts />
-      <BackToTop visible={visibleTop} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+<BackToTop visible={visibleTop} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
       <CookieBanner accepted={cookiesAccepted} onAccept={acceptCookies} />
     </div>
   )

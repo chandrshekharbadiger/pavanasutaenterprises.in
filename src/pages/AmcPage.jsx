@@ -1,19 +1,52 @@
 import { motion } from 'framer-motion'
-import { FiClock, FiMessageCircle, FiPhoneCall, FiShield, FiTool } from 'react-icons/fi'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { FiCheckCircle, FiClock, FiMessageCircle, FiPhoneCall, FiShield, FiTool } from 'react-icons/fi'
 import {
-  Breadcrumbs,
-  ButtonLink,
-  FaqAccordion,
-  FormField,
-  PriceTable,
-  Seo,
-  SectionHeading,
+    Breadcrumbs,
+    ButtonLink,
+    FaqAccordion,
+    FormField,
+    PriceTable,
+    SectionHeading,
+    Seo,
 } from '../components'
+import { submitInquiry } from '../inquiryService'
 import { amcFaq, amcMaintenance, amcPlans, buildUrl, site } from '../siteContent'
 
 export function AmcPage() {
+  const [toast, setToast] = useState(null)
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({
+    defaultValues: {
+      fullName: '',
+      companyName: '',
+      phoneNumber: '',
+      email: '',
+      assets: '',
+      notes: '',
+    },
+  })
+
+  const onSubmit = async (values) => {
+    try {
+      await submitInquiry({ type: 'amc', values })
+      setToast({ type: 'success', message: 'Thank you! Your AMC request has been submitted successfully.' })
+      reset()
+      setTimeout(() => setToast(null), 5000)
+    } catch (error) {
+      setToast({ type: 'error', message: error.message || 'Something went wrong. Please try again.' })
+      setTimeout(() => setToast(null), 5000)
+    }
+  }
+
   return (
     <div className="page-stack">
+      {toast && (
+        <div className={`toast toast-${toast.type}`} style={{ position: 'fixed', bottom: '2rem', right: '2rem', padding: '1rem 1.5rem', borderRadius: '0.75rem', display: 'flex', gap: '0.75rem', alignItems: 'center', zIndex: '9999', background: toast.type === 'success' ? '#d1fae5' : '#fee2e2', border: '1px solid ' + (toast.type === 'success' ? '#059669' : '#dc2626') }}>
+          {toast.type === 'success' ? <FiCheckCircle /> : <FiShield />}
+          <span style={{ color: toast.type === 'success' ? '#065f46' : '#991b1b' }}>{toast.message}</span>
+        </div>
+      )}
       <Seo
         title="Annual Maintenance Contracts"
         description="Modern AMC plans for preventive maintenance, emergency breakdown support, response time management, and operational continuity."
@@ -161,22 +194,29 @@ export function AmcPage() {
           summary="Use this form to outline your assets, support expectations, and response requirements."
         />
         <div className="quote-band quote-band-inline">
-          <form className="quote-form" onSubmit={(event) => event.preventDefault()}>
+          <form className="quote-form" onSubmit={handleSubmit(onSubmit)}>
+            <FormField label="Full Name" error={errors.fullName?.message}>
+              <input type="text" placeholder="Your full name" {...register('fullName', validators.requiredText('Please enter your name.'))} />
+            </FormField>
             <FormField label="Company name">
-              <input type="text" placeholder="Facility owner or operator" />
+              <input type="text" placeholder="Facility owner or operator" {...register('companyName')} />
             </FormField>
-            <FormField label="Email">
-              <input type="email" placeholder="name@company.com" />
+            <FormField label="Phone" error={errors.phoneNumber?.message}>
+              <input type="tel" placeholder="Phone number" {...register('phoneNumber', validators.phone)} />
             </FormField>
-            <FormField label="Assets to cover">
-              <input type="text" placeholder="HVAC, panels, fire systems, plumbing" />
+            <FormField label="Email" error={errors.email?.message}>
+              <input type="email" placeholder="name@company.com" {...register('email', validators.email)} />
+            </FormField>
+            <FormField label="Assets to cover" error={errors.assets?.message}>
+              <input type="text" placeholder="HVAC, panels, fire systems, plumbing" {...register('assets', validators.requiredText('Please list the assets to cover.'))} />
             </FormField>
             <FormField label="Scope notes">
-              <textarea rows="4" placeholder="Add service level expectations, site count, or response needs." />
+              <textarea rows="4" placeholder="Add service level expectations, site count, or response needs." {...register('notes')} />
             </FormField>
-            <ButtonLink to="/contact" variant="primary">
-              Submit AMC request
-            </ButtonLink>
+            <button type="submit" className="button-link button-link-primary" disabled={isSubmitting}>
+              {isSubmitting ? <FiLoader style={{ animation: 'spin 1s linear infinite' }} /> : null}
+              <span>{isSubmitting ? 'Submitting...' : 'Submit AMC request'}</span>
+            </button>
           </form>
           <div className="quote-side">
             <h3>Expected response time</h3>

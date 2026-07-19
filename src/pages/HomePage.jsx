@@ -306,8 +306,8 @@ function CompanySection() {
         </motion.div>
 
         <div className="stats-panel">
-          <CountUpStat value={420} suffix="+" label="Projects delivered" tone="quiet" />
-          <CountUpStat value={24} suffix="+" label="Cities served" tone="quiet" />
+          <CountUpStat value={10} suffix="+" label="Projects delivered" tone="quiet" />
+          <CountUpStat value={10} suffix="+" label="Cities served" tone="quiet" />
           <CountUpStat value={99} suffix=".2%" label="Uptime focus" tone="quiet" />
           <CountUpStat value={92} suffix="%" label="Retention" tone="quiet" />
         </div>

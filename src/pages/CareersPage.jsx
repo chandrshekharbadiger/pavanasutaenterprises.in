@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { FiBriefcase, FiCheckCircle, FiUpload, FiUsers } from 'react-icons/fi'
+import { FiBriefcase, FiCheckCircle as FiCheck, FiCheckCircle, FiUpload, FiUsers } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import {
     Breadcrumbs,
@@ -10,6 +11,7 @@ import {
     SectionHeading,
     Seo,
 } from '../components'
+import { submitInquiry } from '../inquiryService'
 import {
     buildUrl,
     careerBenefits,
@@ -20,6 +22,7 @@ import {
 
 export function CareersPage() {
   const navigate = useNavigate()
+  const [toast, setToast] = useState(null)
   const {
     register,
     handleSubmit,
@@ -37,13 +40,24 @@ export function CareersPage() {
   })
 
   const onSubmit = async (data) => {
-    await new Promise((resolve) => window.setTimeout(resolve, 700))
-    reset()
-    navigate('/careers/thank-you', { state: { applicant: data.name, role: data.role } })
+    try {
+      await submitInquiry({ type: 'careers', values: data })
+      reset()
+      navigate('/careers/thank-you', { state: { applicant: data.name, role: data.role } })
+    } catch (error) {
+      setToast({ type: 'error', message: error.message || 'Something went wrong. Please try again.' })
+      setTimeout(() => setToast(null), 5000)
+    }
   }
 
   return (
     <div className="page-stack">
+      {toast && (
+        <div className={`toast toast-${toast.type}`} style={{ position: 'fixed', bottom: '2rem', right: '2rem', padding: '1rem 1.5rem', borderRadius: '0.75rem', display: 'flex', gap: '0.75rem', alignItems: 'center', zIndex: '9999', background: toast.type === 'success' ? '#d1fae5' : '#fee2e2', border: '1px solid ' + (toast.type === 'success' ? '#059669' : '#dc2626') }}>
+          {toast.type === 'success' ? <FiCheck /> : <FiCheckCircle />}
+          <span style={{ color: toast.type === 'success' ? '#065f46' : '#991b1b' }}>{toast.message}</span>
+        </div>
+      )}
       <Seo
         title="Careers"
         description="Explore current openings, company culture, hiring process, and apply online with resume upload."
@@ -236,7 +250,7 @@ export function CareersPage() {
               />
             </FormField>
             <button type="submit" className="button-link button-link-primary" disabled={isSubmitting}>
-              <FiUpload aria-hidden="true" />
+              {isSubmitting ? <FiLoader style={{ animation: 'spin 1s linear infinite' }} /> : <FiUpload aria-hidden="true" />}
               <span>{isSubmitting ? 'Submitting...' : 'Submit application'}</span>
             </button>
           </form>

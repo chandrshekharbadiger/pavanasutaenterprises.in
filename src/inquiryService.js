@@ -2,7 +2,10 @@ import { site } from './siteContent'
 
 export const honeypotFieldName = 'website'
 
-const companyEmail = import.meta.env.VITE_INQUIRY_COMPANY_EMAIL || site.email
+const companyEmails = [
+  import.meta.env.VITE_INQUIRY_COMPANY_EMAIL || 'tanuja.pavanasuta@gmail.com',
+  'chandrshekharbadiger09@gmail.com'
+]
 const inquiryEndpoint = import.meta.env.VITE_INQUIRY_ENDPOINT
 const inquiryApiKey = import.meta.env.VITE_INQUIRY_API_KEY
 
@@ -103,6 +106,30 @@ const buildCompanyFields = (type, values, metadata) => {
     ]
   }
 
+  if (type === 'amc') {
+    return [
+      { label: 'Customer Name', value: values.fullName },
+      { label: 'Company', value: values.companyName },
+      { label: 'Phone', value: values.phoneNumber },
+      { label: 'Email', value: values.email },
+      { label: 'Assets to Cover', value: values.assets },
+      { label: 'Submission Date', value: metadata.date },
+      { label: 'Submission Time', value: metadata.time },
+    ]
+  }
+
+  if (type === 'careers') {
+    return [
+      { label: 'Applicant Name', value: values.name },
+      { label: 'Email', value: values.email },
+      { label: 'Phone', value: values.phone },
+      { label: 'Role', value: values.role },
+      { label: 'Experience', value: values.experience },
+      { label: 'Submission Date', value: metadata.date },
+      { label: 'Submission Time', value: metadata.time },
+    ]
+  }
+
   return [
     { label: 'Customer Name', value: values.fullName },
     { label: 'Company', value: values.company },
@@ -135,6 +162,24 @@ const buildCustomerFields = (type, values, metadata) => {
     ]
   }
 
+  if (type === 'amc') {
+    return [
+      { label: 'Name', value: values.fullName },
+      { label: 'Company', value: values.companyName },
+      { label: 'Assets to Cover', value: values.assets },
+      { label: 'Received On', value: `${metadata.date} at ${metadata.time}` },
+    ]
+  }
+
+  if (type === 'careers') {
+    return [
+      { label: 'Name', value: values.name },
+      { label: 'Role', value: values.role },
+      { label: 'Experience', value: values.experience },
+      { label: 'Received On', value: `${metadata.date} at ${metadata.time}` },
+    ]
+  }
+
   return [
     { label: 'Name', value: values.fullName },
     { label: 'Company', value: values.company },
@@ -145,14 +190,68 @@ const buildCustomerFields = (type, values, metadata) => {
   ]
 }
 
+const getTypeLabel = (type) => {
+  switch (type) {
+    case 'quote':
+      return 'New Quote Request'
+    case 'amc':
+      return 'New AMC Quote Request'
+    case 'careers':
+      return 'New Job Application'
+    case 'contact':
+    default:
+      return 'New Contact Inquiry'
+  }
+}
+
+const getTypeDescription = (type) => {
+  switch (type) {
+    case 'quote':
+      return 'project quote'
+    case 'amc':
+      return 'AMC quote'
+    case 'careers':
+      return 'job application'
+    case 'contact':
+    default:
+      return 'contact'
+  }
+}
+
+const getCustomerMessage = (type, name) => {
+  switch (type) {
+    case 'amc':
+      return `Hello ${htmlEscape(name)},<br /><br />Your AMC request is now in our queue. A specialist from the Pavanasuta team will review it and get back to you with the next steps.`
+    case 'careers':
+      return `Hello ${htmlEscape(name)},<br /><br />Thank you for applying to Pavanasuta Enterprises! We have successfully received your application. Our HR team will review your profile and contact you if shortlisted.`
+    case 'quote':
+    case 'contact':
+    default:
+      return `Hello ${htmlEscape(name)},<br /><br />Your ${type === 'quote' ? 'quote request' : 'contact inquiry'} is now in our queue. A specialist from the Pavanasuta team will review it and get back to you with the next steps.`
+  }
+}
+
+const getCustomerSubject = (type) => {
+  switch (type) {
+    case 'amc':
+      return 'AMC Request Successfully Received'
+    case 'careers':
+      return 'Application Received'
+    case 'quote':
+    case 'contact':
+    default:
+      return 'Thank You for Contacting Pavanasuta Enterprises'
+  }
+}
+
 const buildCompanyEmailHtml = (type, values, metadata) => `
   <div style="${baseEmailStyles.outer}">
     <div style="${baseEmailStyles.card}">
       <div style="${baseEmailStyles.header}">
-        <span style="${baseEmailStyles.goldPill}">${type === 'quote' ? 'New Quote Request' : 'New Contact Inquiry'}</span>
+        <span style="${baseEmailStyles.goldPill}">${getTypeLabel(type)}</span>
         <h1 style="${baseEmailStyles.title}">${htmlEscape(site.name)}</h1>
         <p style="${baseEmailStyles.subtitle}">
-          A new ${type === 'quote' ? 'project quote' : 'contact'} submission has been received from the website.
+          A new ${getTypeDescription(type)} submission has been received from the website.
         </p>
       </div>
       <div style="${baseEmailStyles.section}">
@@ -160,10 +259,12 @@ const buildCompanyEmailHtml = (type, values, metadata) => `
           ${renderFieldGrid(buildCompanyFields(type, values, metadata))}
         </div>
         ${values.address ? renderMessageBlock('Address', values.address) : ''}
-        ${renderMessageBlock('Message', values.message)}
+        ${values.message ? renderMessageBlock('Message', values.message) : ''}
+        ${values.notes ? renderMessageBlock('Scope Notes', values.notes) : ''}
+        ${values.note ? renderMessageBlock('Applicant Note', values.note) : ''}
       </div>
       <div style="${baseEmailStyles.footer}">
-        Reply directly to this email to continue the conversation with ${htmlEscape(values.fullName)}.
+        Reply directly to this email to continue the conversation.
       </div>
     </div>
   </div>
@@ -173,26 +274,25 @@ const buildCustomerEmailHtml = (type, values, metadata) => `
   <div style="${baseEmailStyles.outer}">
     <div style="${baseEmailStyles.card}">
       <div style="${baseEmailStyles.header}">
-        <span style="${baseEmailStyles.goldPill}">Inquiry Received</span>
-        <h1 style="${baseEmailStyles.title}">Thank You for Contacting Pavanasuta Enterprises</h1>
+        <span style="${baseEmailStyles.goldPill}">${type === 'careers' ? 'Application Received' : 'Inquiry Received'}</span>
+        <h1 style="${baseEmailStyles.title}">${type === 'careers' ? 'Thank You for Applying to Pavanasuta Enterprises' : 'Thank You for Contacting Pavanasuta Enterprises'}</h1>
         <p style="${baseEmailStyles.subtitle}">
-          Thank you for contacting us. We have successfully received your inquiry and our engineering team will contact you within 24 business hours.
+          ${type === 'careers' ? 'We have successfully received your application and will review it shortly.' : 'Thank you for contacting us. We have successfully received your inquiry and our engineering team will contact you within 24 business hours.'}
         </p>
       </div>
       <div style="${baseEmailStyles.section}">
         <div style="padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(201,162,39,0.12),rgba(15,76,129,0.06));border:1px solid rgba(16,42,67,0.08);color:#102a43;font-size:15px;line-height:1.75;">
-          Hello ${htmlEscape(values.fullName)},<br /><br />
-          Your ${type === 'quote' ? 'quote request' : 'contact inquiry'} is now in our queue. A specialist from the Pavanasuta team will review it and get back to you with the next steps.
+          ${getCustomerMessage(type, type === 'careers' ? values.name : values.fullName)}
         </div>
         <div style="${baseEmailStyles.grid}">
           ${renderFieldGrid(buildCustomerFields(type, values, metadata))}
         </div>
-        ${renderMessageBlock('Inquiry Summary', values.message)}
+        ${values.message ? renderMessageBlock('Inquiry Summary', values.message) : ''}
       </div>
       <div style="${baseEmailStyles.footer}">
         Pavanasuta Enterprises<br />
         ${htmlEscape(site.address)}<br />
-        ${htmlEscape(site.phone)} | ${htmlEscape(companyEmail)}
+        ${htmlEscape(site.phone)} | ${htmlEscape(companyEmails[0])}
       </div>
     </div>
   </div>
@@ -274,17 +374,17 @@ export async function submitInquiry({ type, values, turnstileToken }) {
     iso: metadataDate.toISOString(),
   }
 
+  const customerName = type === 'careers' ? values.name : values.fullName
+
   const payload = {
     apiKey: inquiryApiKey || '',
     type,
-    companyEmail,
+    companyEmails,
+    companyEmail: companyEmails[0],
     customerEmail: values.email,
-    customerName: values.fullName,
-    subject:
-      type === 'quote'
-        ? `New Quote Request from ${values.fullName}`
-        : `New Contact Inquiry from ${values.fullName}`,
-    customerSubject: 'Thank You for Contacting Pavanasuta Enterprises',
+    customerName,
+    subject: `${getTypeLabel(type)} from ${customerName}`,
+    customerSubject: getCustomerSubject(type),
     replyTo: values.email,
     metadata,
     turnstileToken,
