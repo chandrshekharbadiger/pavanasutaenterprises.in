@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { FiCheckCircle, FiClock, FiMessageCircle, FiPhoneCall, FiShield, FiTool } from 'react-icons/fi'
+import { FiCheckCircle, FiClock, FiLoader, FiMessageCircle, FiPhoneCall, FiShield, FiTool } from 'react-icons/fi'
 import {
-    Breadcrumbs,
-    ButtonLink,
-    FaqAccordion,
-    FormField,
-    PriceTable,
-    SectionHeading,
-    Seo,
+  Breadcrumbs,
+  ButtonLink,
+  FaqAccordion,
+  FormField,
+  PriceTable,
+  SectionHeading,
+  Seo,
 } from '../components'
-import { submitInquiry } from '../inquiryService'
+import { submitInquiry, validators } from '../inquiryService'
 import { amcFaq, amcMaintenance, amcPlans, buildUrl, site } from '../siteContent'
 
 export function AmcPage() {
