@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { FiBriefcase, FiCheckCircle as FiCheck, FiCheckCircle, FiUpload, FiUsers } from 'react-icons/fi'
+import { FiBriefcase, FiCheckCircle as FiCheck, FiCheckCircle, FiLoader, FiUpload, FiUsers } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import {
     Breadcrumbs,

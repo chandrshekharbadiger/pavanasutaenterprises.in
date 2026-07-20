@@ -376,6 +376,44 @@ export async function submitInquiry({ type, values, turnstileToken }) {
 
   const customerName = type === 'careers' ? values.name : values.fullName
 
+  // Map form values to exact backend keys
+  let mappedFields = { ...values }
+  
+  if (type === 'quote') {
+    mappedFields = {
+      ...mappedFields,
+      fullName: values.fullName,
+      phoneNumber: values.phoneNumber,
+      email: values.email,
+      selectCategory: values.category,  // Map category -> selectCategory
+      projectType: values.projectType,
+      city: values.city,
+      state: values.state,
+      budget: values.budget,
+      message: values.message,
+    }
+  } else if (type === 'careers') {
+    mappedFields = {
+      ...mappedFields,
+      // Careers form fields (backend may need different mapping, but let's keep what we have)
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      role: values.role,
+      experience: values.experience,
+      note: values.note,
+    }
+  } else if (type === 'amc') {
+    mappedFields = {
+      ...mappedFields,
+      fullName: values.fullName,
+      phoneNumber: values.phoneNumber,
+      email: values.email,
+      assets: values.assets,
+      notes: values.notes,
+    }
+  }
+
   const payload = {
     apiKey: inquiryApiKey || '',
     type,
@@ -388,7 +426,7 @@ export async function submitInquiry({ type, values, turnstileToken }) {
     replyTo: values.email,
     metadata,
     turnstileToken,
-    fields: values,
+    fields: mappedFields,
     html: {
       company: buildCompanyEmailHtml(type, values, metadata),
       customer: buildCustomerEmailHtml(type, values, metadata),
