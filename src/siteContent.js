@@ -32,7 +32,7 @@ export const site = {
   ],
   phoneDigits: '+916361999504',
   whatsapp: '+916361999504',
-  email: 'tanuja.pavanasuta@gmail.com',
+  email: 'tanuja@pavanasutaenterprises.in',
   address: '#84, Marikunte, Davangere—577513',
   workingHours: 'Mon - Sat, 8:30 AM - 7:00 PM',
   siteUrl: import.meta.env.VITE_SITE_URL || 'http://localhost:5173',

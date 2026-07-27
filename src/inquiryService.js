@@ -3,8 +3,8 @@ import { site } from './siteContent'
 export const honeypotFieldName = 'website'
 
 const companyEmails = [
-  import.meta.env.VITE_INQUIRY_COMPANY_EMAIL || 'tanuja.pavanasuta@gmail.com',
-  'chandrshekharbadiger09@gmail.com'
+  import.meta.env.VITE_INQUIRY_COMPANY_EMAIL || 'tanuja@pavanasutaenterprises.in',
+  'rudreshmprakash@pavanasutaenterprises.in'
 ]
 const inquiryEndpoint = import.meta.env.VITE_INQUIRY_ENDPOINT
 const inquiryApiKey = import.meta.env.VITE_INQUIRY_API_KEY
@@ -362,6 +362,18 @@ export const validators = {
   },
 }
 
+const fileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      const base64String = reader.result.split(',')[1]
+      resolve(base64String)
+    }
+    reader.onerror = (error) => reject(error)
+  })
+}
+
 export async function submitInquiry({ type, values, turnstileToken }) {
   if (!inquiryEndpoint) {
     throw new Error('Inquiry endpoint is not configured. Add VITE_INQUIRY_ENDPOINT to continue.')
@@ -376,7 +388,6 @@ export async function submitInquiry({ type, values, turnstileToken }) {
 
   const customerName = type === 'careers' ? values.name : values.fullName
 
-  // Map form values to exact backend keys
   let mappedFields = { ...values }
   
   if (type === 'quote') {
@@ -385,7 +396,7 @@ export async function submitInquiry({ type, values, turnstileToken }) {
       fullName: values.fullName,
       phoneNumber: values.phoneNumber,
       email: values.email,
-      selectCategory: values.category,  // Map category -> selectCategory
+      selectCategory: values.category,  
       projectType: values.projectType,
       city: values.city,
       state: values.state,
@@ -395,7 +406,6 @@ export async function submitInquiry({ type, values, turnstileToken }) {
   } else if (type === 'careers') {
     mappedFields = {
       ...mappedFields,
-      // Careers form fields (backend may need different mapping, but let's keep what we have)
       name: values.name,
       email: values.email,
       phone: values.phone,
@@ -414,6 +424,20 @@ export async function submitInquiry({ type, values, turnstileToken }) {
     }
   }
 
+  let attachments = []
+  const fileToAttach = values.resume || values.file || values.attachment
+  
+  if (fileToAttach) {
+    const actualFile = fileToAttach instanceof FileList ? fileToAttach[0] : fileToAttach
+    if (actualFile instanceof File) {
+      const base64Content = await fileToBase64(actualFile)
+      attachments.push({
+        filename: actualFile.name,
+        content: base64Content,
+      })
+    }
+  }
+
   const payload = {
     apiKey: inquiryApiKey || '',
     type,
@@ -427,6 +451,7 @@ export async function submitInquiry({ type, values, turnstileToken }) {
     metadata,
     turnstileToken,
     fields: mappedFields,
+    attachments,
     html: {
       company: buildCompanyEmailHtml(type, values, metadata),
       customer: buildCustomerEmailHtml(type, values, metadata),
