@@ -1,27 +1,27 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import {
-    FiChevronDown,
-    FiChevronRight,
-    FiMenu,
-    FiPhoneCall,
-    FiX,
+  FiChevronDown,
+  FiChevronRight,
+  FiMenu,
+  FiPhoneCall,
+  FiX,
 } from 'react-icons/fi'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
-    BackToTop,
-    ButtonLink,
-    CookieBanner,
-    LoadingScreen,
+  BackToTop,
+  ButtonLink,
+  CookieBanner,
+  LoadingScreen,
 } from '../components'
 import {
-    contactMethods,
-    footerLinks,
-    navLinks,
-    serviceGroups,
-    serviceLookup,
-    site,
-    socialLinks,
+  contactMethods,
+  footerLinks,
+  navLinks,
+  serviceGroups,
+  serviceLookup,
+  site,
+  socialLinks,
 } from '../siteContent'
 
 function useScrollState() {
@@ -55,8 +55,7 @@ function ServicesMegaMenu({ onNavigate, onClose }) {
           <p className="eyebrow">Services</p>
           <h3>Complete MEP engineering solutions</h3>
           <p>
-            Explore the full mechanical, electrical, plumbing, and fire-protection
-            scope, grouped so teams can move from browsing to quoting quickly.
+            <b>Pavanasuta Enterprises</b> provides comprehensive Mechanical, Electrical, and Plumbing (MEP) engineering solutions for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects. Our services are designed to deliver reliable, efficient, and sustainable building systems that meet the highest standards of quality and safety.
           </p>
           <ButtonLink to="/services" variant="secondary" onClick={onClose}>
             View all services

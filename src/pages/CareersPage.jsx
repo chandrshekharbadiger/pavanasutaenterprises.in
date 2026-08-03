@@ -60,7 +60,7 @@ export function CareersPage() {
       )}
       <Seo
         title="Careers"
-        description="Explore current openings, company culture, hiring process, and apply online with resume upload."
+        description="Explore current openings, company culture, hiring process, and apply online with resume upload at Pavanasuta Enterprises."
         path="/careers"
         schema={[
           {
@@ -76,11 +76,10 @@ export function CareersPage() {
 
       <section className="page-hero">
         <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Careers' }]} />
-        <p className="eyebrow">Careers</p>
-        <h1>Join a team that likes organized work and real outcomes.</h1>
+        <p className="eyebrow">Careers at Pavanasuta Enterprises</p>
+        <h1>Help build the future through engineering excellence.</h1>
         <p>
-          The careers page highlights current openings, the way the team works, and a
-          straightforward application flow with resume upload and validation.
+          At Pavanasuta Enterprises, we believe our people are the foundation of our success. We welcome passionate, skilled, and motivated individuals who are eager to build a rewarding career in the MEP industry.
         </p>
         <div className="hero-actions">
           <ButtonLink href="#apply" variant="primary">
@@ -96,7 +95,7 @@ export function CareersPage() {
         <SectionHeading
           eyebrow="Current Openings"
           title="Open roles across delivery and service."
-          summary="The openings reflect the team’s core disciplines and how the business operates in the field."
+          summary="Whether you are an experienced professional or a recent graduate, we offer opportunities to develop your technical expertise and take on challenging projects."
         />
         <div className="opening-grid">
           {careerOpenings.map((item) => (
@@ -131,8 +130,8 @@ export function CareersPage() {
       <section className="section-block">
         <SectionHeading
           eyebrow="Benefits"
-          title="Why people stay."
-          summary="The focus is on meaningful field exposure, support, and the opportunity to grow in a real engineering environment."
+          title="Why join us?"
+          summary="We are committed to creating a workplace that encourages learning, innovation, teamwork, and professional growth."
         />
         <div className="feature-grid">
           {careerBenefits.map((item) => (
@@ -154,8 +153,8 @@ export function CareersPage() {
       <section className="section-block">
         <SectionHeading
           eyebrow="Company Culture"
-          title="Calm, practical, and accountable."
-          summary="Culture here is less about slogans and more about how the work gets done."
+          title="Safe, inclusive, and collaborative."
+          summary="Culture here is rooted in continuous learning, technical training, and a performance-driven environment with clear opportunities for advancement."
         />
         <div className="culture-grid">
           {cultureNotes.map((item) => (
@@ -187,7 +186,7 @@ export function CareersPage() {
         <SectionHeading
           eyebrow="Apply Online"
           title="Send your details and resume."
-          summary="The form includes validation and a dedicated thank-you route after submission."
+          summary="If you are committed to excellence and ready to contribute to high-quality engineering solutions, we invite you to become part of the Pavanasuta Enterprises team."
         />
         <div className="quote-band quote-band-inline">
           <form className="quote-form" onSubmit={handleSubmit(onSubmit)}>

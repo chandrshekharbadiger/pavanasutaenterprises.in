@@ -7,7 +7,7 @@ import {
   FiPhoneCall,
   FiShield,
 } from 'react-icons/fi'
-import { Breadcrumbs, ButtonLink, FaqAccordion, Seo, SectionHeading } from '../components'
+import { Breadcrumbs, ButtonLink, FaqAccordion, SectionHeading, Seo } from '../components'
 import { ContactInquiryForm } from '../inquiryComponents'
 import { buildUrl, contactMethods, site } from '../siteContent'
 
@@ -50,9 +50,7 @@ export function ContactPage() {
         <p className="eyebrow">Contact</p>
         <h1>Start the conversation with the engineering team.</h1>
         <p>
-          Use the modern enquiry flow below for project quotes, site visits, AMC discussions,
-          or a quick technical call. The layout stays simple, but the routing is built for
-          enterprise-grade follow-up.
+          We'd be pleased to discuss your MEP requirements and provide reliable engineering solutions for your projects. Whether you have an inquiry, need technical support, or would like to request a quotation, our team is here to assist you.
         </p>
         <div className="hero-actions">
           <ButtonLink href={`tel:${site.phoneDigits}`} icon={FiPhoneCall}>

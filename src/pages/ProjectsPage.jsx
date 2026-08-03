@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useMemo, useState } from 'react'
 import { FiFilter, FiImage } from 'react-icons/fi'
 import {
   Breadcrumbs,
@@ -7,8 +7,8 @@ import {
   MiniGallery,
   ProjectCard,
   ProjectCarousel,
-  Seo,
   SectionHeading,
+  Seo,
 } from '../components'
 import { buildUrl, projectFilters, projects, site } from '../siteContent'
 
@@ -102,7 +102,7 @@ export function ProjectsPage() {
         <SectionHeading
           eyebrow="Completed Projects"
           title={`${completed.length} delivered projects in the current filter`}
-          summary="Completed work shows the range of building types and handover quality."
+          summary="Our completed projects reflect our expertise in delivering reliable Mechanical, Electrical, and Plumbing systems that are efficient, sustainable, and built to perform. Every completed project demonstrates our commitment to customer satisfaction, engineering excellence, and long-term value."
         />
         <div className="project-grid">
           {completed.map((project) => (
@@ -115,7 +115,7 @@ export function ProjectsPage() {
         <SectionHeading
           eyebrow="Ongoing Projects"
           title={`${ongoing.length} active projects under delivery`}
-          summary="Ongoing work highlights live coordination, staged execution, and active support."
+          summary="Our ongoing projects are managed with a strong focus on planning, technical excellence, timely execution, and strict adherence to quality and safety standards. We work closely with clients, consultants, and contractors to ensure seamless coordination and successful project delivery."
         />
         <div className="project-grid">
           {ongoing.map((project) => (

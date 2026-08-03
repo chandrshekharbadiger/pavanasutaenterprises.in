@@ -1223,12 +1223,17 @@ export const amcFaq = [
 ]
 
 export const companyStory = [
-  'Pavanasuta Enterprises was built around a simple idea: engineering services should feel organized, responsive, and dependable from the first call to the last inspection.',
-  'Our ongoing projects are managed with a strong focus on planning, technical excellence, timely execution, and strict adherence to quality and safety standards.',
-  'We work closely with clients, consultants, and contractors to ensure seamless coordination and successful project delivery.',
-  'Our completed projects reflect our expertise in delivering reliable Mechanical, Electrical, and Plumbing systems that are efficient, sustainable, and built to perform.',
-  'Every completed project demonstrates our commitment to customer satisfaction, engineering excellence, and long-term value.',
-  'The team works across mechanical, electrical, plumbing, fire protection, and AMC delivery so clients do not have to manage fragmented vendors for critical building systems.',
+  'Pavanasuta Enterprises is a professional Mechanical, Electrical, and Plumbing (MEP) engineering company dedicated to delivering reliable, efficient, and high-quality building services solutions. We specialize in the design, installation, testing, commissioning, operation, and maintenance of MEP systems for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects.',
+  'With a commitment to engineering excellence, safety, and customer satisfaction, we provide innovative and cost-effective solutions tailored to the unique requirements of every project. Our experienced team combines technical expertise with industry best practices to ensure every project is completed on time, within budget, and to the highest quality standards.',
+  'At Pavanasuta Enterprises, we believe that successful projects are built on trust, integrity, and collaboration. By embracing modern technologies and sustainable engineering practices, we help create safe, energy-efficient, and future-ready buildings that deliver long-term value to our clients.',
+  'Our Commitment:',
+  '1.0 Engineering Excellence',
+  '2.0 Quality Assurance',
+  '3.0 Safety First',
+  '4.0 Timely Project Delivery',
+  '5.0 Customer-Centric Solutions',
+  '6.0 Sustainable and Energy-Efficient Practices',
+  'At Pavanasuta Enterprises, we don\'t just install MEP systems—we deliver dependable engineering solutions that power modern infrastructure and build lasting relationships with our clients.'
 ]
 
 export const missionVision = [
