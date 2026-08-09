@@ -1,48 +1,52 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
-  FiCheckCircle,
-  FiClipboard,
-  FiClock,
-  FiFileText,
-  FiMapPin,
-  FiMessageCircle,
-  FiPhoneCall,
-  FiShield,
-  FiStar,
-  FiTool,
-  FiUsers,
+    FiCheckCircle,
+    FiClipboard,
+    FiClock,
+    FiFileText,
+    FiMapPin,
+    FiMessageCircle,
+    FiPhoneCall,
+    FiShield,
+    FiStar,
+    FiTool,
+    FiUsers,
 } from 'react-icons/fi'
 import {
-  ButtonLink,
-  CountUpStat,
-  FaqAccordion,
-  ProcessTimeline,
-  ProjectCard,
-  ProjectCarousel,
-  SectionHeading,
-  Seo,
-  ServiceCard,
+    ButtonLink,
+    CountUpStat,
+    FaqAccordion,
+    ProcessTimeline,
+    ProjectCard,
+    ProjectCarousel,
+    SectionHeading,
+    Seo,
+    ServiceCard,
 } from '../components'
 import { QuoteRequestSection } from '../inquiryComponents'
 import {
-  buildUrl,
-  certificates,
-  companyOverview,
-  heroStats,
-  homeFaq,
-  industries,
-  projects,
-  safetyStandards,
-  serviceHighlights,
-  services,
-  site,
-  testimonials,
-  trustedSectors,
-  whyChooseUs,
-  workProcess,
+    buildUrl,
+    certificates,
+    companyOverview,
+    heroStats,
+    homeFaq,
+    industries,
+    projects,
+    safetyStandards,
+    serviceHighlights,
+    services,
+    site,
+    trustedSectors,
+    whyChooseUs,
+    workProcess,
 } from '../siteContent'
 
-const featuredServices = services.slice(0, 8)
+const featuredServices = [
+  ...services.filter((s) => s.group === 'mechanical').slice(0, 2),
+  ...services.filter((s) => s.group === 'fire').slice(0, 2),
+  ...services.filter((s) => s.group === 'electrical').slice(0, 2),
+  ...services.filter((s) => s.group === 'plumbing').slice(0, 2),
+]
 const featuredProjects = [projects[0], projects[1], projects[7], projects[10]].filter(Boolean)
 const latestProjects = projects.filter((project) => project.status === 'Ongoing').slice(0, 5)
 
@@ -354,34 +358,6 @@ function ProjectsSection() {
   )
 }
 
-function TestimonialsSection() {
-  return (
-    <section className="section-block">
-      <SectionHeading
-        eyebrow="Testimonials"
-        title="Clients value the calm, not just the finish."
-        summary="The tone of feedback matters here because the work touches live buildings, coordinated teams, and operational stakes."
-      />
-      <div className="testimonial-grid">
-        {testimonials.map((item) => (
-          <motion.article
-            key={item.quote}
-            className="testimonial-card"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <FiStar aria-hidden="true" />
-            <p>{item.quote}</p>
-            <strong>{item.role}</strong>
-            <span>{item.context}</span>
-          </motion.article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 function CertificatesSection() {
   return (
     <section className="section-block">
@@ -526,7 +502,6 @@ export function HomePage() {
       <CompanySection />
       <WorkProcessSection />
       <ProjectsSection />
-      <TestimonialsSection />
       <CertificatesSection />
       <SafetySection />
       <LatestProjectsSection />

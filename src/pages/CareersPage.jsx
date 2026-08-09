@@ -4,20 +4,19 @@ import { useForm } from 'react-hook-form'
 import { FiBriefcase, FiCheckCircle as FiCheck, FiCheckCircle, FiLoader, FiUpload, FiUsers } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import {
-    Breadcrumbs,
-    ButtonLink,
-    FormField,
-    ProcessTimeline,
-    SectionHeading,
-    Seo,
+  Breadcrumbs,
+  ButtonLink,
+  FormField,
+  ProcessTimeline,
+  SectionHeading,
+  Seo,
 } from '../components'
 import { submitInquiry } from '../inquiryService'
 import {
-    buildUrl,
-    careerBenefits,
-    careerOpenings,
-    cultureNotes,
-    hiringProcess,
+  buildUrl,
+  careerBenefits,
+  cultureNotes,
+  hiringProcess
 } from '../siteContent'
 
 export function CareersPage() {
@@ -94,44 +93,42 @@ export function CareersPage() {
       <section className="section-block">
         <SectionHeading
           eyebrow="Current Openings"
-          title="Open roles across delivery and service."
-          summary="Whether you are an experienced professional or a recent graduate, we offer opportunities to develop your technical expertise and take on challenging projects."
+          title="Thank you for your interest."
+          summary="We are not actively hiring at this time. However, we always welcome talented individuals to share their profiles — when new openings appear, we review our submissions first."
         />
-        <div className="opening-grid">
-          {careerOpenings.map((item) => (
-            <motion.article
-              key={item.title}
-              className="opening-card"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.35 }}
-            >
-              <div className="opening-head">
-                <FiBriefcase aria-hidden="true" />
-                <div>
-                  <strong>{item.title}</strong>
-                  <span>
-                    {item.location} - {item.type}
-                  </span>
-                </div>
-              </div>
-              <p>{item.summary}</p>
-              <ul>
-                {item.requirements.map((req) => (
-                  <li key={req}>{req}</li>
-                ))}
-              </ul>
-            </motion.article>
-          ))}
-        </div>
+        <motion.article
+          className="opening-card"
+          style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center', padding: '48px 36px' }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div style={{ width: '80px', height: '80px', margin: '0 auto 20px', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(176,122,50,0.14), rgba(201,162,91,0.22))', display: 'grid', placeItems: 'center', color: 'var(--primary)', border: '1px solid rgba(176,122,50,0.18)' }}>
+            <FiBriefcase aria-hidden="true" style={{ width: '36px', height: '36px' }} />
+          </div>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 2.4vw, 2.4rem)', color: 'var(--secondary)', marginBottom: '12px', fontFamily: 'var(--heading)' }}>
+            No active openings right now
+          </h3>
+          <p style={{ color: 'var(--muted)', fontSize: '1.05rem', lineHeight: '1.8', maxWidth: '56ch', margin: '0 auto 28px' }}>
+            We appreciate your interest in Pavanasuta Enterprises. Our team is currently focused on delivering our active project pipeline. Please feel free to share your resume below — we keep all profiles on file and will reach out directly when matching opportunities open up.
+          </p>
+          <div style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
+            <ButtonLink href="#apply" variant="primary">
+              Submit your profile
+            </ButtonLink>
+            <ButtonLink to="/contact" variant="outline">
+              Talk to our team
+            </ButtonLink>
+          </div>
+        </motion.article>
       </section>
 
       <section className="section-block">
         <SectionHeading
           eyebrow="Benefits"
           title="Why join us?"
-          summary="We are committed to creating a workplace that encourages learning, innovation, teamwork, and professional growth."
+          summary=""
         />
         <div className="feature-grid">
           {careerBenefits.map((item) => (
@@ -184,9 +181,9 @@ export function CareersPage() {
 
       <section className="section-block" id="apply">
         <SectionHeading
-          eyebrow="Apply Online"
-          title="Send your details and resume."
-          summary="If you are committed to excellence and ready to contribute to high-quality engineering solutions, we invite you to become part of the Pavanasuta Enterprises team."
+          eyebrow="Submit Profile"
+          title="Share your profile with us."
+          summary="Even though we don't have active openings right now, we keep every profile on file. When roles open up that match your background, we'll contact you directly."
         />
         <div className="quote-band quote-band-inline">
           <form className="quote-form" onSubmit={handleSubmit(onSubmit)}>
@@ -217,15 +214,12 @@ export function CareersPage() {
                 {...register('phone', { required: 'Please enter your phone number.' })}
               />
             </FormField>
-            <FormField label="Role" error={errors.role?.message}>
-              <select {...register('role', { required: 'Please choose a role.' })}>
-                <option value="">Select a role</option>
-                {careerOpenings.map((item) => (
-                  <option key={item.title} value={item.title}>
-                    {item.title}
-                  </option>
-                ))}
-              </select>
+            <FormField label="Role / area of interest" error={errors.role?.message}>
+              <input
+                type="text"
+                placeholder="e.g. HVAC Site Engineer, Fire Protection Supervisor"
+                {...register('role', { required: 'Please specify your area of interest.' })}
+              />
             </FormField>
             <FormField label="Experience" error={errors.experience?.message}>
               <input
@@ -244,20 +238,22 @@ export function CareersPage() {
             <FormField label="Short note" error={errors.note?.message}>
               <textarea
                 rows="4"
-                placeholder="Tell us what kind of role you are looking for."
+                placeholder="Tell us about your background, what kind of roles you're interested in, and your preferred locations."
                 {...register('note', { required: 'Please share a short note.' })}
               />
             </FormField>
             <button type="submit" className="button-link button-link-primary" disabled={isSubmitting}>
               {isSubmitting ? <FiLoader style={{ animation: 'spin 1s linear infinite' }} /> : <FiUpload aria-hidden="true" />}
-              <span>{isSubmitting ? 'Submitting...' : 'Submit application'}</span>
+              <span>{isSubmitting ? 'Submitting...' : 'Submit profile for future openings'}</span>
             </button>
           </form>
           <div className="quote-side">
-            <h3>Application notes</h3>
+            <h3>About this submission</h3>
             <p>
-              We review applications in order and contact shortlisted candidates with the
-              next step. Use the thank-you page to confirm the submission flow.
+              Your profile will be stored in our candidate database and reviewed against openings as they become available. If a role matches your skills and preferences, the HR team will reach out directly to schedule a discussion.
+            </p>
+            <p style={{ marginTop: '16px', color: 'var(--muted)', fontSize: '0.92rem' }}>
+              We do not share or sell any candidate information. All submissions are treated as confidential and for internal recruitment use only.
             </p>
           </div>
         </div>

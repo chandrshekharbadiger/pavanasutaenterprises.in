@@ -430,20 +430,181 @@
 }
 
 .stat-card {
-  padding: 20px;
+  position: relative;
+  padding: 22px 26px 26px;
   display: grid;
-  gap: 8px;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(176, 122, 50, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(53, 35, 20, 0.05);
+  overflow: hidden;
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stat-card-label-top {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3a2e1e;
+  letter-spacing: 0.01em;
+}
+
+.stat-card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.stat-card-tag-gold {
+  background: linear-gradient(135deg, rgba(201, 162, 91, 0.18), rgba(181, 122, 45, 0.12));
+  color: #8a5b22;
+  border: 1px solid rgba(181, 122, 45, 0.22);
+}
+
+.stat-card-tag-warm {
+  background: linear-gradient(135deg, rgba(212, 140, 68, 0.18), rgba(192, 108, 50, 0.12));
+  color: #9a5f25;
+  border: 1px solid rgba(212, 140, 68, 0.22);
+}
+
+.stat-card-tag-quiet {
+  background: rgba(176, 122, 50, 0.08);
+  color: #8a5b22;
+  border: 1px solid rgba(176, 122, 50, 0.16);
+}
+
+.stat-card-accent {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(181, 122, 45, 0.28) 25%,
+    rgba(201, 162, 91, 0.5) 50%,
+    rgba(181, 122, 45, 0.28) 75%,
+    transparent 100%
+  );
+}
+
+.stat-card-body {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.stat-card-main {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.stat-card-donut {
+  position: relative;
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+}
+
+.stat-card-donut svg {
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(181, 122, 45, 0.08));
+}
+
+.stat-card-donut-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #5b4628;
+  line-height: 1;
+}
+
+.stat-card-donut-gold .stat-card-donut-progress {
+  stroke: url(#goldGradient);
+  stroke: linear-gradient(135deg, #B07A32 0%, #C9A25B 100%);
+}
+
+@supports not (stroke: linear-gradient(135deg, #B07A32, #C9A25B)) {
+  .stat-card-donut-gold .stat-card-donut-progress {
+    stroke: #B07A32;
+  }
+}
+
+.stat-card-donut-gold .stat-card-donut-progress {
+  stroke: #B07A32;
+}
+
+.stat-card-donut-warm .stat-card-donut-progress {
+  stroke: #D48C44;
+}
+
+.stat-card-donut-quiet .stat-card-donut-progress {
+  stroke: #A8773B;
 }
 
 .stat-card strong {
-  font-size: 2rem;
+  font-size: 3.2rem;
   line-height: 1;
   color: var(--primary);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 .stat-card span {
   color: var(--muted);
   line-height: 1.4;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #61503a;
+}
+
+.hero-stats .stat-card {
+  padding: 24px 28px 28px;
+  border-radius: 20px;
+  box-shadow: 0 14px 38px rgba(53, 35, 20, 0.06);
+}
+
+.hero-stats .stat-card strong {
+  font-size: 3.6rem;
+}
+
+.hero-stats .stat-card span {
+  font-size: 1.02rem;
+}
+
+.hero-stats .stat-card-donut {
+  width: 96px;
+  height: 96px;
+}
+
+.hero-stats .stat-card-donut svg {
+  width: 96px;
+  height: 96px;
+  viewBox: 0 0 88 88;
+}
+
+.hero-stats .stat-card-donut-percent {
+  font-size: 0.95rem;
 }
 
 .stat-card-quiet {
@@ -564,7 +725,7 @@
 .hero-stats {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 16px;
 }
 
@@ -3055,12 +3216,12 @@
 
 .searchable-option.is-highlighted,
 .searchable-option:hover {
-  background: rgba(15, 76, 129, 0.06);
+  background: rgba(181, 122, 45, 0.1);
 }
 
 .searchable-option.is-selected {
   color: var(--secondary);
-  background: linear-gradient(135deg, rgba(201, 162, 39, 0.14), rgba(15, 76, 129, 0.08));
+  background: linear-gradient(135deg, rgba(201, 162, 91, 0.2), rgba(181, 122, 45, 0.12));
 }
 
 .searchable-option svg {

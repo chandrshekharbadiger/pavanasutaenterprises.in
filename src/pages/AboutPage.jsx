@@ -4,12 +4,13 @@ import {
   Breadcrumbs,
   ButtonLink,
   CountUpStat,
-  Seo,
   SectionHeading,
+  Seo,
   Timeline,
 } from '../components'
 import {
   aboutStats,
+  buildUrl,
   certificates,
   companyStory,
   coreValues,
@@ -19,7 +20,6 @@ import {
   team,
   timeline,
   whyChooseUs,
-  buildUrl,
 } from '../siteContent'
 
 export function AboutPage() {
@@ -85,9 +85,9 @@ export function AboutPage() {
 
       <section className="section-block">
         <SectionHeading
-          eyebrow="Mission and Vision"
-          title="What guides the work."
-          summary="The mission and vision keep the team focused on clarity, uptime, and client trust."
+          eyebrow="Leadership"
+          title="Words from our leadership."
+          summary="A short message from the General Manager and the Founder that sets the tone for how the team approaches every project."
         />
         <div className="feature-grid">
           {missionVision.map((item) => (

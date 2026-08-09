@@ -22,10 +22,10 @@ import {
 
 export const site = {
   name: 'PAVANASUTA ENTERPRISES',
-  shortName: '',
+  shortName: 'Pavanasuta',
   tagline: 'Complete MEP engineering solutions for commercial, industrial, and residential projects.',
   description:
-    'Pavanasuta Enterprises provides comprehensive Mechanical, Electrical, and Plumbing (MEP) engineering solutions for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects. Our services are designed to deliver reliable, efficient, and sustainable building systems that meet the highest standards of quality and safety.',
+    'PAVANASUTA ENTERPRISES is a professional Mechanical, Electrical, and Plumbing (MEP) engineering company in Hubli-Dharwad and Davangere, Karnataka providing HVAC, electrical, plumbing, fire fighting, installation, testing, commissioning and AMC services for residential, commercial, industrial, healthcare, hospitality, and infrastructure projects.',
   phone: '6361999504',
   phones: [
     { number: '6361999504', digits: '+916361999504' },
@@ -34,10 +34,10 @@ export const site = {
   whatsapp: '+916361999504',
   email: 'tanuja@pavanasutaenterprises.in',
   address: '#84, Marikunte, Davangere—577513',
-  workingHours: 'Mon - Sat, 8:30 AM - 7:00 PM',
-  siteUrl: import.meta.env.VITE_SITE_URL || 'http://localhost:5173',
+  workingHours: 'Mon - Sat, 9:30 AM - 6:00 PM',
+  siteUrl: 'https://pavanasutaenterprises.in',
   logo: '/assets/projects/pavanasuta-logo.png',
-  accentImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+  accentImage: 'https://pavanasutaenterprises.in/assets/projects/pavanasuta-logo.png',
 }
 
 export const buildUrl = (path = '/') => {
@@ -76,12 +76,12 @@ export const heroStats = [
 
 export const industries = [
   {
-    title: 'Healthcare',
+    title: 'Healthcare Centers ',
     description: 'Hospitals, diagnostics, and critical care environments with strict uptime and hygiene needs.',
     icon: FiShield,
   },
   {
-    title: 'Commercial Real Estate',
+    title: 'Commercial premises',
     description: 'Office towers, mixed-use developments, and business parks that need comfort and control.',
     icon: FiBriefcase,
   },
@@ -91,7 +91,7 @@ export const industries = [
     icon: FiTool,
   },
   {
-    title: 'Education',
+    title: 'Education institutes',
     description: 'Schools, universities, and training campuses that benefit from energy-aware infrastructure.',
     icon: FiBookOpen,
   },
@@ -101,7 +101,7 @@ export const industries = [
     icon: FiHome,
   },
   {
-    title: 'Data and Technology',
+    title: 'Data Centers',
     description: 'Mission-critical spaces that rely on precision cooling, power quality, and early warnings.',
     icon: FiHardDrive,
   },
@@ -259,7 +259,7 @@ export const homeFaq = [
 
 const categoryTemplates = {
   mechanical: {
-    label: 'Mechanical Services',
+    label: 'HVAC',
     intro:
       'Heating, Ventilation, and Air Conditioning (HVAC) systems designed for reliable, efficient, and sustainable performance.',
     features: [
@@ -1238,12 +1238,16 @@ export const companyStory = [
 
 export const missionVision = [
   {
-    title: 'Mission',
-    description: 'Deliver disciplined MEP solutions that make buildings safer, more efficient, and easier to operate.',
+    title: "General Manager's Message",
+    description: `At Pavanasuta Enterprises, we are committed to delivering reliable, high-quality MEP solutions with integrity, precision, and professionalism. Our focus is on exceeding client expectations through innovation, safety, and timely project execution. Together with our dedicated team, we strive to build lasting partnerships and contribute to the development of efficient, sustainable infrastructure.
+
+"Committed to Quality. Driven by Excellence."
+
+— General Manager`,
   },
   {
-    title: 'Vision',
-    description: 'Be the first partner clients trust for premium engineering execution and reliable maintenance support.',
+    title: "Founder's Vision",
+    description: `"At Pavanasuta Enterprises, our vision is to become a trusted leader in MEP engineering by delivering innovative, sustainable, and high-quality solutions with integrity, safety, and excellence. We are committed to building lasting relationships and creating value through engineering that powers the future."`,
   },
 ]
 
@@ -1308,8 +1312,8 @@ export const timeline = [
   { year: '2022', title: 'Started Fire Fighting Solutions', description: 'Expanded into Fire Fighting systems and installation services.' },
   { year: '2023', title: 'Expanded to Complete MEP Solutions', description: 'Started providing Mechanical, Electrical, Plumbing and Fire Protection services under one company.' },
   { year: '2024', title: 'Started Executing Small Projects', description: 'Successfully completed residential and commercial MEP projects across Karnataka.' },
-  { year: '2025', title: 'Expanded to Hubli', description: 'Started executing Government Projects along with private sector projects.' },
-  { year: '2026', title: 'Expanded Across North Karnataka', description: 'Serving multiple districts with complete MEP engineering solutions and AMC support.' },
+  { year: '2025', title: 'Expand to North Karnataka', description: 'Expanding operations and project execution across North Karnataka.' },
+  { year: '2026', title: 'All Over Karnataka', description: 'Serving the entire state of Karnataka with complete MEP engineering solutions and AMC support.' },
 ]
 
 export const aboutStats = [
@@ -1320,34 +1324,32 @@ export const aboutStats = [
 ]
 
 export const careerOpenings = [
-  {
-    title: 'MEP Project Engineer',
-    location: 'On-site',
-    type: 'Full-time',
-    summary: 'Coordinates execution, approvals, documentation, and commissioning support.',
-    requirements: ['MEP site delivery experience', 'Drawing coordination', 'Client communication'],
-  },
-  {
-    title: 'HVAC Site Supervisor',
-    location: 'On-site',
-    type: 'Full-time',
-    summary: 'Leads mechanical installation teams and quality checks in the field.',
-    requirements: ['HVAC installation experience', 'Crew coordination', 'Safety awareness'],
-  },
-  {
-    title: 'Electrical Design Engineer',
-    location: 'Hybrid',
-    type: 'Full-time',
-    summary: 'Supports load studies, panel layouts, and coordination drawings.',
-    requirements: ['Electrical design fundamentals', 'Panel and lighting design', 'Documentation discipline'],
-  },
-  {
-    title: 'AMC Service Technician',
-    location: 'Field-based',
-    type: 'Full-time',
-    summary: 'Performs preventive maintenance, breakdown checks, and response support.',
-    requirements: ['Service mindset', 'Troubleshooting', 'Customer communication'],
-  },
+  { title: 'MEP Project Manager', location: 'On-site', type: 'Full-time', summary: 'Leads overall MEP project delivery, coordination, approvals, and stakeholder communication.', requirements: ['MEP project management experience', 'Budget and schedule control', 'Client communication'] },
+  { title: 'MEP Project Engineer', location: 'On-site', type: 'Full-time', summary: 'Coordinates execution, approvals, documentation, and commissioning support.', requirements: ['MEP site delivery experience', 'Drawing coordination', 'Client communication'] },
+  { title: 'HVAC Project Manager', location: 'On-site', type: 'Full-time', summary: 'Manages HVAC project scope, team, schedule, and commissioning from kickoff to handover.', requirements: ['HVAC project management', 'VRF/chilled-water systems', 'Team coordination'] },
+  { title: 'HVAC Project Engineer', location: 'On-site', type: 'Full-time', summary: 'Supports HVAC project engineering, load checks, routing, and site coordination.', requirements: ['HVAC engineering knowledge', 'Drawing interpretation', 'Site follow-up'] },
+  { title: 'HVAC Site Engineer', location: 'On-site', type: 'Full-time', summary: 'Executes HVAC installation at site, coordinates with crew, and ensures quality standards.', requirements: ['HVAC site execution experience', 'Installation follow-up', 'Safety awareness'] },
+  { title: 'HVAC Site Supervisor', location: 'On-site', type: 'Full-time', summary: 'Leads mechanical installation teams and quality checks in the field.', requirements: ['HVAC installation experience', 'Crew coordination', 'Safety awareness'] },
+  { title: 'HVAC Service Engineer', location: 'Field-based', type: 'Full-time', summary: 'Handles HVAC AMC visits, breakdown diagnosis, commissioning, and service reporting.', requirements: ['HVAC troubleshooting', 'Service mindset', 'Reporting discipline'] },
+  { title: 'HVAC Technician', location: 'Field-based', type: 'Full-time', summary: 'Performs HVAC installation support, preventive maintenance, and repair tasks.', requirements: ['Hands-on HVAC experience', 'Tool knowledge', 'Safety discipline'] },
+  { title: 'Fire Fighting Project Manager', location: 'On-site', type: 'Full-time', summary: 'Leads fire protection project planning, approvals, execution, and compliance handover.', requirements: ['Fire-fighting project experience', 'Code compliance knowledge', 'Site coordination'] },
+  { title: 'Fire Fighting Project Engineer', location: 'On-site', type: 'Full-time', summary: 'Supports fire protection engineering, drawings, coordination, and commissioning.', requirements: ['Fire system knowledge', 'Drawing interpretation', 'Site follow-up'] },
+  { title: 'Fire Fighting Site Engineer', location: 'On-site', type: 'Full-time', summary: 'Executes fire system installation at site and ensures quality and compliance.', requirements: ['Fire system installation', 'Site supervision', 'Safety awareness'] },
+  { title: 'Fire Fighting Site Supervisor', location: 'On-site', type: 'Full-time', summary: 'Supervises fire-fighting installation crew and daily site progress.', requirements: ['Fire system installation experience', 'Crew leadership', 'Quality checks'] },
+  { title: 'Fire Fighting Service Engineer', location: 'Field-based', type: 'Full-time', summary: 'Performs fire system AMC, testing, and service calls with proper documentation.', requirements: ['Fire system troubleshooting', 'Testing knowledge', 'Service discipline'] },
+  { title: 'Fire Fighting Technician', location: 'Field-based', type: 'Full-time', summary: 'Performs fire system installation support, maintenance, and repair work.', requirements: ['Hands-on fire system experience', 'Tool knowledge', 'Safety discipline'] },
+  { title: 'Electrical Project Manager', location: 'On-site', type: 'Full-time', summary: 'Manages electrical project scope, approvals, schedule, and final handover.', requirements: ['Electrical project management', 'HT/LT systems knowledge', 'Coordination skills'] },
+  { title: 'Electrical Project Engineer', location: 'On-site', type: 'Full-time', summary: 'Supports electrical engineering, panel layouts, load studies, and site coordination.', requirements: ['Electrical design fundamentals', 'Panel and lighting design', 'Documentation discipline'] },
+  { title: 'Electrical Site Engineer', location: 'On-site', type: 'Full-time', summary: 'Executes electrical installation and ensures quality standards on site.', requirements: ['Electrical site execution', 'Wiring and panel knowledge', 'Safety discipline'] },
+  { title: 'Electrical Site Supervisor', location: 'On-site', type: 'Full-time', summary: 'Supervises electrical installation crew and daily site progress.', requirements: ['Electrical installation experience', 'Crew coordination', 'Safety awareness'] },
+  { title: 'Electrical Service Engineer', location: 'Field-based', type: 'Full-time', summary: 'Handles electrical service visits, troubleshooting, and AMC support.', requirements: ['Electrical troubleshooting', 'Testing instruments', 'Service mindset'] },
+  { title: 'Electrical Technician', location: 'Field-based', type: 'Full-time', summary: 'Performs electrical installation support, maintenance, and repair tasks.', requirements: ['Hands-on electrical experience', 'Tool knowledge', 'Safety discipline'] },
+  { title: 'Plumbing Project Manager', location: 'On-site', type: 'Full-time', summary: 'Manages plumbing project scope, site works, approvals, and final handover.', requirements: ['Plumbing project management', 'Water/drainage systems', 'Site coordination'] },
+  { title: 'Plumbing Project Engineer', location: 'On-site', type: 'Full-time', summary: 'Supports plumbing design, routing, BOQ, and site coordination.', requirements: ['Plumbing design knowledge', 'Drawing interpretation', 'Site follow-up'] },
+  { title: 'Plumbing Site Engineer', location: 'On-site', type: 'Full-time', summary: 'Executes plumbing installation on site and ensures quality standards.', requirements: ['Plumbing site execution', 'Pipe fitting knowledge', 'Safety discipline'] },
+  { title: 'Plumbing Site Supervisor', location: 'On-site', type: 'Full-time', summary: 'Supervises plumbing installation crew and daily site progress.', requirements: ['Plumbing installation experience', 'Crew coordination', 'Quality checks'] },
+  { title: 'Plumbing Service Engineer', location: 'Field-based', type: 'Full-time', summary: 'Handles plumbing service visits, diagnosis, and AMC support.', requirements: ['Plumbing troubleshooting', 'Leakage and pressure checks', 'Service discipline'] },
+  { title: 'Plumbing Technician', location: 'Field-based', type: 'Full-time', summary: 'Performs plumbing installation support, maintenance, and repair tasks.', requirements: ['Hands-on plumbing experience', 'Tool knowledge', 'Safety discipline'] },
 ]
 
 export const careerBenefits = [

@@ -3,18 +3,18 @@ import { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { FaWhatsapp } from 'react-icons/fa6'
 import {
-    FiArrowRight,
-    FiBriefcase,
-    FiChevronDown,
-    FiChevronLeft,
-    FiChevronRight,
-    FiClipboard,
-    FiMapPin,
-    FiPhone,
-    FiShield,
-    FiStar,
-    FiTool,
-    FiWind,
+  FiArrowRight,
+  FiBriefcase,
+  FiChevronDown,
+  FiChevronLeft,
+  FiChevronRight,
+  FiClipboard,
+  FiMapPin,
+  FiPhone,
+  FiShield,
+  FiStar,
+  FiTool,
+  FiWind,
 } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { buildUrl, site } from './siteContent'
@@ -241,19 +241,46 @@ export function IconLink({ href, label, icon: Icon, className = '' }) {
   )
 }
 
-export function CountUpStat({ value, suffix = '', label, tone = 'default' }) {
+export function CountUpStat({ value, suffix = '', label, tone = 'default', accent = '', progress = null }) {
   const reduceMotion = useReducedMotion()
   const [count, setCount] = useState(reduceMotion ? value : 0)
+  const [isHovered, setIsHovered] = useState(false)
+  const hasAnimated = useRef(false)
+
+  const progressMap = {
+    'Completed Projects': 72,
+    'Ongoing Projects': 45,
+    'Project Categories': 90,
+    'Cities Covered': 65,
+    'Projects delivered': 75,
+    'Cities served': 60,
+    'Uptime focus': 98,
+    'Retention': 92,
+    'Completed': 75,
+    'Cities': 60,
+    'Uptime': 98,
+    'Client Retention': 92,
+  }
+  const chartProgress = progress ?? progressMap[label] ?? 55
+  const circumference = 2 * Math.PI * 36
+  const offset = circumference - (chartProgress / 100) * circumference
+  const innerOffset = circumference - (Math.min(chartProgress + 28, 100) / 100) * circumference
 
   useEffect(() => {
     if (reduceMotion) {
+      setCount(value)
       return undefined
+    }
+
+    if (isHovered && !hasAnimated.current) {
+      hasAnimated.current = true
     }
 
     let raf = 0
     const start = performance.now()
-    const duration = 1200
+    const duration = 1800
 
+    setCount(0)
     const tick = (now) => {
       const progress = Math.min((now - start) / duration, 1)
       const eased = 1 - (1 - progress) ** 3
@@ -263,20 +290,105 @@ export function CountUpStat({ value, suffix = '', label, tone = 'default' }) {
 
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [reduceMotion, value])
+  }, [reduceMotion, value, isHovered])
+
+  const tagMap = {
+    'Completed Projects': 'Delivered',
+    'Ongoing Projects': 'Active',
+    'Project Categories': 'Types',
+    'Cities Covered': 'Covered',
+    'Projects delivered': 'Delivered',
+    'Cities served': 'Served',
+    'Uptime focus': 'SLA',
+    'Retention': 'Loyalty',
+    'Completed': 'Delivered',
+    'Cities': 'Covered',
+    'Uptime': 'SLA',
+    'Client Retention': 'Loyalty',
+  }
+  const tagText = tagMap[label] || accent
+
+  const chartVariant = (
+    label === 'Ongoing Projects' ||
+    label === 'Retention' ||
+    label === 'Client Retention'
+  )
+    ? 'warm'
+    : tone === 'quiet'
+      ? 'quiet'
+      : 'gold'
 
   return (
     <motion.article
-      className={`stat-card stat-card-${tone}`}
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      className={`stat-card stat-card-${tone} stat-card-has-chart`}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.5 }}
+      whileHover={{ scale: 1.015, y: -3 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
     >
-      <strong>
-        {count}
-        {suffix}
-      </strong>
-      <span>{label}</span>
+      <div className="stat-card-header">
+        <span className="stat-card-label-top">{label}</span>
+        {tagText ? (
+          <span className={`stat-card-tag stat-card-tag-${chartVariant}`}>
+            {tagText}
+          </span>
+        ) : null}
+      </div>
+      <div className="stat-card-accent" aria-hidden="true" />
+      <div className="stat-card-main">
+        <div className={`stat-card-donut stat-card-donut-${chartVariant}`}>
+          <svg viewBox="0 0 88 88" width="88" height="88" aria-hidden="true" focusable="false">
+            <circle
+              cx="44"
+              cy="44"
+              r="36"
+              fill="none"
+              stroke="rgba(176,122,50,0.10)"
+              strokeWidth="7"
+            />
+            <circle
+              className="stat-card-donut-base"
+              cx="44"
+              cy="44"
+              r="36"
+              fill="none"
+              stroke="rgba(201,162,91,0.25)"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeDasharray={`${circumference}`}
+              strokeDashoffset={`${innerOffset}`}
+              transform="rotate(-90 44 44)"
+              style={{ transition: 'stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1)' }}
+            />
+            <circle
+              className="stat-card-donut-progress"
+              cx="44"
+              cy="44"
+              r="36"
+              fill="none"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeDasharray={`${circumference}`}
+              strokeDashoffset={`${offset}`}
+              transform="rotate(-90 44 44)"
+              style={{ transition: 'stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1)' }}
+            />
+          </svg>
+          <span className="stat-card-donut-percent">{chartProgress}%</span>
+        </div>
+        <div className="stat-card-body">
+          <strong>
+            {count}
+            {suffix}
+          </strong>
+          <span>{label}</span>
+        </div>
+      </div>
     </motion.article>
   )
 }
