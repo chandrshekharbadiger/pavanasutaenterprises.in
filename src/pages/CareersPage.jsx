@@ -58,8 +58,8 @@ export function CareersPage() {
         </div>
       )}
       <Seo
-        title="Careers"
-        description="Explore current openings, company culture, hiring process, and apply online with resume upload at Pavanasuta Enterprises."
+        title="Careers at Pavanasuta Enterprises | MEP Engineering Jobs"
+        description="Join Pavanasuta Enterprises and build a career in MEP engineering, site execution, safety, quality, and project delivery."
         path="/careers"
         schema={[
           {

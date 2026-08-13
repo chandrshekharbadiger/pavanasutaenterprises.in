@@ -30,8 +30,8 @@ export function ContactPage() {
   return (
     <div className="page-stack">
       <Seo
-        title="Contact"
-        description="Contact Pavanasuta Enterprises through phone, WhatsApp, email, contact form, or Google Map."
+        title="Contact Pavanasuta Enterprises | MEP Engineering Enquiries"
+        description="Get in touch with Pavanasuta Enterprises for HVAC, fire protection, electrical, plumbing, and AMC enquiries in Karnataka."
         path="/contact"
         schema={[
           {

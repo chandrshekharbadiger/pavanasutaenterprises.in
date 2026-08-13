@@ -56,8 +56,8 @@ function PageHero() {
   return (
     <section className="hero-section home-hero">
       <Seo
-        title="PavanasutaEnterprises"
-        description="Complete MEP engineering solutions for HVAC, fire protection, electrical, plumbing, AMC, and responsive field support."
+        title="MEP Engineering Company in Hubli, Karnataka"
+        description="PAVANASUTA ENTERPRISES delivers HVAC, fire protection, electrical, plumbing, installation, testing, commissioning, and annual maintenance services across Karnataka."
         path="/"
         schema={[
           {
@@ -72,6 +72,23 @@ function PageHero() {
               streetAddress: site.address,
               addressCountry: 'IN',
             },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: site.name,
+            url: buildUrl('/'),
+            logo: buildUrl('/assets/projects/pavanasuta-logo.png'),
+            email: site.email,
+            telephone: site.phoneDigits,
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'PAVANASUTA ENTERPRISES | MEP Engineering Company in Hubli, Karnataka',
+            url: buildUrl('/'),
+            isPartOf: { '@id': `${buildUrl('/')}#website` },
+            about: { '@type': 'Organization', name: site.name },
           },
           {
             '@context': 'https://schema.org',

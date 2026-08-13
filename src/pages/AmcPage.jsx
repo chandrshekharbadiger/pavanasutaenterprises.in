@@ -48,8 +48,8 @@ export function AmcPage() {
         </div>
       )}
       <Seo
-        title="Annual Maintenance Contracts"
-        description="Modern AMC plans for preventive maintenance, emergency breakdown support, response time management, and operational continuity."
+        title="Annual Maintenance Contracts for MEP Systems | Pavanasuta Enterprises"
+        description="Protect uptime with Pavanasuta Enterprises AMC plans for HVAC, electrical, fire, and plumbing systems including preventive maintenance and rapid support."
         path="/annual-maintenance-contracts"
         schema={[
           {

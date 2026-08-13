@@ -22,8 +22,8 @@ export function ServicesIndexPage() {
   return (
     <div className="page-stack">
       <Seo
-        title="Services"
-        description="Browse all MEP services including HVAC, fire protection, electrical, plumbing, and AMC-ready support."
+        title="MEP Services | HVAC, Fire, Electrical & Plumbing"
+        description="Explore Pavanasuta Enterprises MEP services for HVAC, fire protection, electrical, plumbing, and project support across Karnataka."
         path="/services"
         schema={[
           {

@@ -26,8 +26,8 @@ export function AboutPage() {
   return (
     <div className="page-stack">
       <Seo
-        title="About Us"
-        description="Learn about Pavanasuta Enterprises, our mission, values, engineers, quality policy, safety standards, and track record."
+        title="About Pavanasuta Enterprises | MEP Engineering Company in Karnataka"
+        description="Learn about Pavanasuta Enterprises, our MEP engineering experience, quality standards, safety practices, and commitment to dependable project delivery."
         path="/about-us"
         schema={[
           {

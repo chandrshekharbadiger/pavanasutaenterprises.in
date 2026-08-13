@@ -34,8 +34,8 @@ export function ProjectsPage() {
   return (
     <div className="page-stack">
       <Seo
-        title="Projects"
-        description="Premium MEP projects with completed and ongoing work across HVAC, fire protection, electrical, and plumbing."
+        title="MEP Project Portfolio | HVAC, Fire, Electrical & Plumbing Projects"
+        description="Review completed and ongoing MEP projects by Pavanasuta Enterprises across HVAC, fire protection, electrical, and plumbing systems."
         path="/projects"
         schema={[
           {
