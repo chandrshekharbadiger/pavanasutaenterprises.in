@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   FiChevronDown,
   FiChevronRight,
+  FiDownload,
   FiMenu,
   FiPhoneCall,
   FiX,
@@ -138,6 +139,14 @@ function MobileMenu({ open, onClose }) {
             </div>
 
             <div className="mobile-menu-actions">
+              <ButtonLink
+                href={site.companyProfilePdf}
+                variant="secondary"
+                icon={FiDownload}
+                download="Pavanasuta Enterprises - Company Profile.pdf"
+              >
+                Download Profile
+              </ButtonLink>
               <ButtonLink to="/contact" variant="primary" onClick={onClose}>
                 Get Free Quote
               </ButtonLink>
@@ -224,6 +233,15 @@ export function SiteLayout() {
           </nav>
 
           <div className="header-actions">
+            <ButtonLink
+              href={site.companyProfilePdf}
+              variant="secondary"
+              icon={FiDownload}
+              download="Pavanasuta Enterprises - Company Profile.pdf"
+              className="header-download-button"
+            >
+              Download Profile
+            </ButtonLink>
             <ButtonLink href={`tel:${site.phoneDigits}`} variant="outline" icon={FiPhoneCall}>
               Call Now
             </ButtonLink>

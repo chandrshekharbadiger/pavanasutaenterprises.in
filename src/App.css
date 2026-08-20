@@ -142,6 +142,10 @@
   flex: 0 0 auto;
 }
 
+.header-download-button {
+  white-space: nowrap;
+}
+
 .menu-toggle {
   display: none;
   align-items: center;

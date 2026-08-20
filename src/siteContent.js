@@ -38,6 +38,7 @@ export const site = {
   siteUrl: 'https://pavanasutaenterprises.in',
   logo: '/assets/projects/pavanasuta-logo.png',
   accentImage: 'https://pavanasutaenterprises.in/assets/projects/pavanasuta-logo.png',
+  companyProfilePdf: '/assets/company-profile.pdf',
 }
 
 export const buildUrl = (path = '/') => {
