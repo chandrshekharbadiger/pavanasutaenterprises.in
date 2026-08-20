@@ -625,65 +625,6 @@ export function GalleryStrip({ items, image = site.accentImage }) {
   )
 }
 
-export function ClientLogoMarquee({ clients }) {
-  const reduceMotion = useReducedMotion()
-  const safeClients = clients || []
-
-  if (!safeClients.length) {
-    return null
-  }
-
-  const renderCard = (client, index, isDuplicate = false) => (
-    <motion.figure
-      key={`${client.name}-${index}-${isDuplicate ? 'dup' : 'base'}`}
-      className="client-logo-card"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.45 }}
-      transition={{ duration: 0.35, delay: index * 0.04 }}
-      whileHover={{ y: -4, scale: 1.02 }}
-    >
-      <span className="client-logo-mark" aria-hidden="true">
-        <img src={client.logo} alt="" loading="lazy" decoding="async" />
-      </span>
-      <figcaption>
-        <strong>{client.name}</strong>
-        <span>Esteemed client</span>
-      </figcaption>
-    </motion.figure>
-  )
-
-  if (reduceMotion) {
-    return (
-      <div className="client-logo-grid" aria-label="Our esteemed clients">
-        {safeClients.map((client, index) => renderCard(client, index))}
-      </div>
-    )
-  }
-
-  const renderTrack = (items, reverse = false) => (
-    <div className={`client-logo-track ${reverse ? 'is-reverse' : ''}`}>
-      <div className="client-logo-group">
-        {items.map((client, index) => renderCard(client, index))}
-      </div>
-      <div className="client-logo-group" aria-hidden="true">
-        {items.map((client, index) => renderCard(client, index, true))}
-      </div>
-    </div>
-  )
-
-  return (
-    <div className="client-logo-marquee" aria-label="Our esteemed clients">
-      <div className="client-logo-rail">
-        {renderTrack(safeClients)}
-      </div>
-      <div className="client-logo-rail client-logo-rail-secondary">
-        {renderTrack([...safeClients].reverse(), true)}
-      </div>
-    </div>
-  )
-}
-
 export function FaqAccordion({ items, openIndex = 0 }) {
   const [active, setActive] = useState(openIndex)
 

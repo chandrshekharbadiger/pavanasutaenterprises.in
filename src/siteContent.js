@@ -1159,41 +1159,6 @@ export const projects = [
 export const projectFilters = ['All', 'HVAC', 'Fire Protection', 'Electrical', 'Plumbing']
 export const projectLookup = Object.fromEntries(projects.map((item) => [item.slug, item]))
 
-export const esteemedClients = [
-  {
-    name: 'Sri Jayadeva Institute of Cardiovascular Sciences & Research',
-    logo: '/assets/clients/sri-jayadeva-institute-cardiovascular-sciences.jpeg',
-  },
-  {
-    name: 'Mylar Sugars Ltd',
-    logo: '/assets/clients/mylar-sugars-ltd.jpeg',
-  },
-  {
-    name: 'Vishwaradya Cancer Hospital & Research Institute',
-    logo: '/assets/clients/vishwaradya-cancer-hospital.jpeg',
-  },
-  {
-    name: 'Sudeksha Multi Speciality Hospital',
-    logo: '/assets/clients/sudeksha-multi-speciality-hospital.jpeg',
-  },
-  {
-    name: 'Chitradurga Multispeciality Hospital',
-    logo: '/assets/clients/chitradurga-multispeciality-hospital.jpeg',
-  },
-  {
-    name: 'Healthcare Partner',
-    logo: '/assets/clients/healthcare-partner.jpeg',
-  },
-  {
-    name: 'Vijayanagar Institute of Medical Sciences, Bellary',
-    logo: '/assets/clients/vijayanagar-institute-medical-sciences-bellary.jpeg',
-  },
-  {
-    name: 'Balaji Krupa Propertys',
-    logo: '/assets/clients/balaji-krupa-propertys.jpeg',
-  },
-]
-
 export const amcPlans = [
   {
     name: 'Essential',
