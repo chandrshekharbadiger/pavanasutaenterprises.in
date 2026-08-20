@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
-import { FiFilter, FiImage } from 'react-icons/fi'
+import { FiFilter, FiUsers } from 'react-icons/fi'
 import {
+  ClientLogoMarquee,
   Breadcrumbs,
   ButtonLink,
-  MiniGallery,
   ProjectCard,
   ProjectCarousel,
   SectionHeading,
   Seo,
 } from '../components'
-import { buildUrl, projectFilters, projects, site } from '../siteContent'
+import { buildUrl, esteemedClients, projectFilters, projects } from '../siteContent'
 
 export function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('All')
@@ -22,7 +22,6 @@ export function ProjectsPage() {
 
   const completed = filteredProjects.filter((project) => project.status === 'Completed')
   const ongoing = filteredProjects.filter((project) => project.status === 'Ongoing')
-  const galleryItems = filteredProjects.slice(0, 3).flatMap((project) => project.gallery.slice(0, 1))
   const carouselItems = filteredProjects.map((project) => ({
     title: project.title,
     caption: project.summary,
@@ -126,20 +125,11 @@ export function ProjectsPage() {
 
       <section className="section-block">
         <SectionHeading
-          eyebrow="Image Gallery"
-          title="A visual preview of representative project scenes."
-          summary="The gallery keeps the page dynamic while staying aligned with the engineering theme."
+          eyebrow="Our Esteemed Clients"
+          title="Trusted by organizations that value disciplined delivery."
+          summary="The old image gallery has been replaced with a client wall so the page now highlights the businesses and institutions that trust our work."
         />
-        <MiniGallery
-          image={site.accentImage}
-          items={galleryItems.length
-            ? galleryItems.slice(0, 6).map((item) => ({
-                title: item.title,
-                caption: item.caption,
-                image: item.image,
-              }))
-            : [{ title: 'Engineering', caption: 'Representative project view' }]}
-        />
+        <ClientLogoMarquee clients={esteemedClients} />
       </section>
 
       <section className="section-block project-summary-band">
@@ -150,8 +140,8 @@ export function ProjectsPage() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.4 }}
         >
-          <FiImage aria-hidden="true" />
-          <strong>Project detail pages now include real project images, gallery views, technology lists, stage updates, and status.</strong>
+          <FiUsers aria-hidden="true" />
+          <strong>Project cards now lead with real delivery imagery, while the client showcase adds a stronger layer of trust across sectors.</strong>
         </motion.div>
       </section>
     </div>

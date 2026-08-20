@@ -1019,22 +1019,22 @@ export const projects = [
     stage: 'Installation in progress',
     technology: ['500 TR chilled water system', 'Ducting', 'Pipe coordination', 'Healthcare HVAC'],
     summary: 'A large healthcare HVAC installation progressing through chilled-water distribution, ducting, and coordinated hospital fit-out.',
-    image: '/assets/projects/sri-jayadeva-500tr-hvac.jpg',
+    image: '/assets/projects/sri-jayadeva-heart-sciences-500-tr-chilled-water.png',
     gallery: [
       {
         title: 'Project exterior',
         caption: 'Regional heart-centre building frontage from the active project photo set.',
-        image: '/assets/projects/sri-jayadeva-500tr-hvac.jpg',
+        image: '/assets/projects/sri-jayadeva-heart-sciences-500-tr-chilled-water.png',
       },
       {
         title: 'Duct corridor',
         caption: 'Long HVAC duct run under execution across the circulation corridor.',
-        image: '/assets/projects/sri-jayadeva-500tr-hvac.jpg',
+        image: '/assets/projects/sri-jayadeva-heart-sciences-500-tr-chilled-water.png',
       },
       {
         title: 'Pipe coordination',
         caption: 'Service-grid view showing the piping and ceiling coordination still underway.',
-        image: '/assets/projects/sri-jayadeva-500tr-hvac.jpg',
+        image: '/assets/projects/sri-jayadeva-heart-sciences-500-tr-chilled-water.png',
       },
     ],
   },
@@ -1135,22 +1135,22 @@ export const projects = [
     stage: 'Mechanical and ceiling coordination',
     technology: ['115 HP VRF system', 'Critical care block', 'Duct support works', 'Indoor unit fit-out'],
     summary: 'A hospital VRF package moving through active coordination between HVAC services, ceiling interfaces, and critical-care interior requirements.',
-    image: '/assets/projects/bmcrc-vims-115hp-vrf.png',
+    image: '/assets/projects/bmcrc-vims-115-hp-vrf-bellary.png',
     gallery: [
       {
         title: 'Campus approach',
         caption: 'Representative healthcare-campus approach shot from the active site set.',
-        image: '/assets/projects/bmcrc-vims-115hp-vrf.png',
+        image: '/assets/projects/bmcrc-vims-115-hp-vrf-bellary.png',
       },
       {
         title: 'Duct execution',
         caption: 'Mechanical works progressing through the corridor service zone.',
-        image: '/assets/projects/bmcrc-vims-115hp-vrf.png',
+        image: '/assets/projects/bmcrc-vims-115-hp-vrf-bellary.png',
       },
       {
         title: 'Indoor distribution',
         caption: 'Cooling hardware and ceiling coordination continuing toward final fit-out.',
-        image: '/assets/projects/bmcrc-vims-115hp-vrf.png',
+        image: '/assets/projects/bmcrc-vims-115-hp-vrf-bellary.png',
       },
     ],
   },
@@ -1158,6 +1158,41 @@ export const projects = [
 
 export const projectFilters = ['All', 'HVAC', 'Fire Protection', 'Electrical', 'Plumbing']
 export const projectLookup = Object.fromEntries(projects.map((item) => [item.slug, item]))
+
+export const esteemedClients = [
+  {
+    name: 'Sri Jayadeva Institute of Cardiovascular Sciences & Research',
+    logo: '/assets/clients/sri-jayadeva-institute-cardiovascular-sciences.jpeg',
+  },
+  {
+    name: 'Mylar Sugars Ltd',
+    logo: '/assets/clients/mylar-sugars-ltd.jpeg',
+  },
+  {
+    name: 'Vishwaradya Cancer Hospital & Research Institute',
+    logo: '/assets/clients/vishwaradya-cancer-hospital.jpeg',
+  },
+  {
+    name: 'Sudeksha Multi Speciality Hospital',
+    logo: '/assets/clients/sudeksha-multi-speciality-hospital.jpeg',
+  },
+  {
+    name: 'Chitradurga Multispeciality Hospital',
+    logo: '/assets/clients/chitradurga-multispeciality-hospital.jpeg',
+  },
+  {
+    name: 'Healthcare Partner',
+    logo: '/assets/clients/healthcare-partner.jpeg',
+  },
+  {
+    name: 'Vijayanagar Institute of Medical Sciences, Bellary',
+    logo: '/assets/clients/vijayanagar-institute-medical-sciences-bellary.jpeg',
+  },
+  {
+    name: 'Balaji Krupa Propertys',
+    logo: '/assets/clients/balaji-krupa-propertys.jpeg',
+  },
+]
 
 export const amcPlans = [
   {
